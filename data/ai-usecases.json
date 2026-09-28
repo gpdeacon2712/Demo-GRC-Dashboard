@@ -1,0 +1,200 @@
+[
+  {
+    "id": "AI-001",
+    "toolName": "Document summarisation assistant",
+    "purpose": "Summarise internal policy documents for faster review",
+    "ownerRole": "GRC Manager",
+    "dataCategory": "internal",
+    "riskRating": 2,
+    "approvalStatus": "Approved",
+    "oversight": [
+      "human-review",
+      "audit-logging"
+    ],
+    "reviewDate": "2026-11-01",
+    "frameworkAlignment": [
+      "ISO 42001"
+    ],
+    "controlIds": [
+      "CTL-010",
+      "CTL-011",
+      "CTL-012",
+      "CTL-017"
+    ],
+    "riskIds": [
+      "RSK-012",
+      "RSK-014"
+    ]
+  },
+  {
+    "id": "AI-002",
+    "toolName": "Anomaly detection model",
+    "purpose": "Flag unusual network traffic patterns for analyst triage",
+    "ownerRole": "CISO",
+    "dataCategory": "internal",
+    "riskRating": 3,
+    "approvalStatus": "Approved",
+    "oversight": [
+      "human-review",
+      "approval-gate",
+      "audit-logging"
+    ],
+    "reviewDate": "2026-09-15",
+    "frameworkAlignment": [
+      "ISO 42001",
+      "NIST AI RMF"
+    ],
+    "controlIds": [
+      "CTL-011",
+      "CTL-012",
+      "CTL-013",
+      "CTL-019"
+    ],
+    "riskIds": [
+      "RSK-015",
+      "RSK-016"
+    ]
+  },
+  {
+    "id": "AI-003",
+    "toolName": "Chat-based support assistant",
+    "purpose": "Answer employee IT questions from a curated knowledge base",
+    "ownerRole": "IT Operations Lead",
+    "dataCategory": "public",
+    "riskRating": 2,
+    "approvalStatus": "Pending review",
+    "oversight": [
+      "human-review"
+    ],
+    "reviewDate": "2026-08-10",
+    "frameworkAlignment": [
+      "ISO 42001"
+    ],
+    "controlIds": [
+      "CTL-010",
+      "CTL-011",
+      "CTL-012",
+      "CTL-013"
+    ],
+    "riskIds": [
+      "RSK-012",
+      "RSK-014"
+    ]
+  },
+  {
+    "id": "AI-004",
+    "toolName": "Predictive maintenance model",
+    "purpose": "Predict equipment failure from sensor telemetry",
+    "ownerRole": "Business Process Owner",
+    "dataCategory": "internal",
+    "riskRating": 4,
+    "approvalStatus": "Pending review",
+    "oversight": [
+      "approval-gate",
+      "kill-switch"
+    ],
+    "reviewDate": "2026-08-01",
+    "frameworkAlignment": [
+      "ISO 42001",
+      "NIST AI RMF",
+      "IEC 62443"
+    ],
+    "controlIds": [
+      "CTL-011",
+      "CTL-012",
+      "CTL-018",
+      "CTL-019",
+      "CTL-004"
+    ],
+    "riskIds": [
+      "RSK-015",
+      "RSK-016"
+    ]
+  },
+  {
+    "id": "AI-005",
+    "toolName": "CV screening assistant",
+    "purpose": "Shortlist job applications against role criteria before human review",
+    "ownerRole": "Business Process Owner",
+    "dataCategory": "personal",
+    "riskRating": 4,
+    "approvalStatus": "Pending review",
+    "oversight": [
+      "human-review",
+      "approval-gate",
+      "audit-logging"
+    ],
+    "reviewDate": "2026-09-01",
+    "frameworkAlignment": [
+      "ISO 42001",
+      "NIST AI RMF"
+    ],
+    "controlIds": [
+      "CTL-010",
+      "CTL-011",
+      "CTL-012",
+      "CTL-017",
+      "CTL-018",
+      "CTL-019"
+    ],
+    "riskIds": [
+      "RSK-012",
+      "RSK-013",
+      "RSK-016"
+    ]
+  },
+  {
+    "id": "AI-006",
+    "toolName": "Meeting transcription and minutes assistant",
+    "purpose": "Transcribe internal meetings and draft minutes for chair approval",
+    "ownerRole": "Data Protection Officer",
+    "dataCategory": "personal",
+    "riskRating": 3,
+    "approvalStatus": "Approved",
+    "oversight": [
+      "human-review",
+      "audit-logging"
+    ],
+    "reviewDate": "2026-10-20",
+    "frameworkAlignment": [
+      "ISO 42001",
+      "ISO 27001"
+    ],
+    "controlIds": [
+      "CTL-010",
+      "CTL-011",
+      "CTL-012",
+      "CTL-017"
+    ],
+    "riskIds": [
+      "RSK-012",
+      "RSK-014"
+    ]
+  },
+  {
+    "id": "AI-007",
+    "toolName": "Code generation assistant",
+    "purpose": "Suggest code for internal tooling; rejected pending a data-flow assessment of the vendor service",
+    "ownerRole": "IT Operations Lead",
+    "dataCategory": "internal",
+    "riskRating": 4,
+    "approvalStatus": "Rejected",
+    "oversight": [
+      "audit-logging"
+    ],
+    "reviewDate": "2026-08-20",
+    "frameworkAlignment": [
+      "NIST AI RMF"
+    ],
+    "controlIds": [
+      "CTL-010",
+      "CTL-011",
+      "CTL-017"
+    ],
+    "riskIds": [
+      "RSK-012",
+      "RSK-014",
+      "RSK-016"
+    ]
+  }
+]

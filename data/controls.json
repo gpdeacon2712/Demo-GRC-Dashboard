@@ -1,0 +1,713 @@
+[
+  {
+    "id": "CTL-001",
+    "name": "Information security policy suite",
+    "frameworks": [
+      "ISO 27001",
+      "NIST CSF"
+    ],
+    "owner": "CISO",
+    "status": "Implemented",
+    "frameworkClauses": [
+      {
+        "framework": "ISO 27001",
+        "ref": "A.5.1",
+        "title": "Policies for information security"
+      },
+      {
+        "framework": "NIST CSF",
+        "ref": "GV.PO-01",
+        "title": "Cybersecurity risk management policy established"
+      }
+    ],
+    "designEffectiveness": "Effective",
+    "operatingEffectiveness": "Effective",
+    "lastTested": "2026-06-15",
+    "nextTest": "2027-06-15",
+    "testMethod": "Inspection",
+    "testNote": "Policy suite approved and communicated; annual review completed.",
+    "riskIds": [
+      "RSK-010"
+    ]
+  },
+  {
+    "id": "CTL-002",
+    "name": "Access control and least privilege",
+    "frameworks": [
+      "ISO 27001",
+      "NIST CSF",
+      "IEC 62443"
+    ],
+    "owner": "IT Operations Lead",
+    "status": "Implemented",
+    "frameworkClauses": [
+      {
+        "framework": "ISO 27001",
+        "ref": "A.5.15",
+        "title": "Access control"
+      },
+      {
+        "framework": "ISO 27001",
+        "ref": "A.8.2",
+        "title": "Privileged access rights"
+      },
+      {
+        "framework": "NIST CSF",
+        "ref": "PR.AA-05",
+        "title": "Access permissions managed (least privilege)"
+      },
+      {
+        "framework": "IEC 62443",
+        "ref": "SR 2.1",
+        "title": "Authorization enforcement (62443-3-3)"
+      }
+    ],
+    "designEffectiveness": "Effective",
+    "operatingEffectiveness": "Partially effective",
+    "lastTested": "2026-07-10",
+    "nextTest": "2027-01-10",
+    "testMethod": "Re-performance",
+    "testNote": "Quarterly access review found 6 stale privileged accounts.",
+    "riskIds": [
+      "RSK-008"
+    ]
+  },
+  {
+    "id": "CTL-003",
+    "name": "Multi-factor authentication for remote access",
+    "frameworks": [
+      "ISO 27001",
+      "NIST CSF"
+    ],
+    "owner": "IT Operations Lead",
+    "status": "In progress",
+    "frameworkClauses": [
+      {
+        "framework": "ISO 27001",
+        "ref": "A.8.5",
+        "title": "Secure authentication"
+      },
+      {
+        "framework": "NIST CSF",
+        "ref": "PR.AA-03",
+        "title": "Users, services and hardware are authenticated"
+      }
+    ],
+    "designEffectiveness": "Effective",
+    "operatingEffectiveness": "Partially effective",
+    "lastTested": "2026-08-20",
+    "nextTest": "2026-11-20",
+    "testMethod": "Inspection",
+    "testNote": "MFA enforced for 78% of remote-access users; rollout continuing.",
+    "riskIds": [
+      "RSK-002"
+    ]
+  },
+  {
+    "id": "CTL-004",
+    "name": "OT network segmentation",
+    "frameworks": [
+      "IEC 62443",
+      "NIST SP 800-82"
+    ],
+    "owner": "OT Security Engineer",
+    "status": "In progress",
+    "frameworkClauses": [
+      {
+        "framework": "IEC 62443",
+        "ref": "SR 5.1",
+        "title": "Network segmentation (62443-3-3)"
+      },
+      {
+        "framework": "IEC 62443",
+        "ref": "SR 5.2",
+        "title": "Zone boundary protection (62443-3-3)"
+      },
+      {
+        "framework": "NIST SP 800-82",
+        "ref": "Sec. 5",
+        "title": "OT cybersecurity architecture (defence-in-depth, segmentation)"
+      }
+    ],
+    "designEffectiveness": "Partially effective",
+    "operatingEffectiveness": "Partially effective",
+    "lastTested": "2026-05-30",
+    "nextTest": "2026-11-30",
+    "testMethod": "Walkthrough",
+    "testNote": "Two of five plant zones segmented; conduits not yet enforced at remaining sites.",
+    "riskIds": [
+      "RSK-003",
+      "RSK-007",
+      "RSK-010"
+    ]
+  },
+  {
+    "id": "CTL-005",
+    "name": "Vulnerability management and patching",
+    "frameworks": [
+      "ISO 27001",
+      "NIST CSF",
+      "IEC 62443"
+    ],
+    "owner": "IT Operations Lead",
+    "status": "Implemented",
+    "frameworkClauses": [
+      {
+        "framework": "ISO 27001",
+        "ref": "A.8.8",
+        "title": "Management of technical vulnerabilities"
+      },
+      {
+        "framework": "NIST CSF",
+        "ref": "ID.RA-01",
+        "title": "Vulnerabilities in assets are identified"
+      },
+      {
+        "framework": "NIST CSF",
+        "ref": "PR.PS-02",
+        "title": "Software maintained, replaced and removed commensurate with risk"
+      },
+      {
+        "framework": "IEC 62443",
+        "ref": "TR 62443-2-3",
+        "title": "Patch management in the IACS environment"
+      }
+    ],
+    "designEffectiveness": "Effective",
+    "operatingEffectiveness": "Partially effective",
+    "lastTested": "2026-08-01",
+    "nextTest": "2026-11-01",
+    "testMethod": "Re-performance",
+    "testNote": "Critical-patch SLA met for 88% of assets against a 95% target.",
+    "riskIds": [
+      "RSK-001"
+    ]
+  },
+  {
+    "id": "CTL-006",
+    "name": "Security awareness training",
+    "frameworks": [
+      "ISO 27001",
+      "NIST CSF"
+    ],
+    "owner": "GRC Manager",
+    "status": "Implemented",
+    "frameworkClauses": [
+      {
+        "framework": "ISO 27001",
+        "ref": "A.6.3",
+        "title": "Information security awareness, education and training"
+      },
+      {
+        "framework": "NIST CSF",
+        "ref": "PR.AT-01",
+        "title": "Personnel provided with awareness and training"
+      }
+    ],
+    "designEffectiveness": "Effective",
+    "operatingEffectiveness": "Effective",
+    "lastTested": "2026-04-30",
+    "nextTest": "2026-10-31",
+    "testMethod": "Inspection",
+    "testNote": "Annual training completion 97%; phishing click rate 4%.",
+    "riskIds": [
+      "RSK-002"
+    ]
+  },
+  {
+    "id": "CTL-007",
+    "name": "Incident response plan and playbooks",
+    "frameworks": [
+      "ISO 27001",
+      "NIST CSF",
+      "NIST SP 800-82"
+    ],
+    "owner": "CISO",
+    "status": "In progress",
+    "frameworkClauses": [
+      {
+        "framework": "ISO 27001",
+        "ref": "A.5.24",
+        "title": "Incident management planning and preparation"
+      },
+      {
+        "framework": "ISO 27001",
+        "ref": "A.5.26",
+        "title": "Response to information security incidents"
+      },
+      {
+        "framework": "NIST CSF",
+        "ref": "RS.MA-01",
+        "title": "Incident response plan executed"
+      },
+      {
+        "framework": "NIST SP 800-82",
+        "ref": "Sec. 6",
+        "title": "Applying the CSF to OT (Respond function)"
+      }
+    ],
+    "designEffectiveness": "Partially effective",
+    "operatingEffectiveness": "Not assessed",
+    "lastTested": "2026-03-15",
+    "nextTest": "2026-09-15",
+    "testMethod": "Walkthrough",
+    "testNote": "Playbooks drafted; OT tabletop exercise not yet performed.",
+    "riskIds": [
+      "RSK-005",
+      "RSK-007"
+    ]
+  },
+  {
+    "id": "CTL-008",
+    "name": "Backup and disaster recovery testing",
+    "frameworks": [
+      "ISO 27001",
+      "NIST CSF"
+    ],
+    "owner": "IT Operations Lead",
+    "status": "Not implemented",
+    "frameworkClauses": [
+      {
+        "framework": "ISO 27001",
+        "ref": "A.8.13",
+        "title": "Information backup"
+      },
+      {
+        "framework": "ISO 27001",
+        "ref": "A.5.30",
+        "title": "ICT readiness for business continuity"
+      },
+      {
+        "framework": "NIST CSF",
+        "ref": "PR.DS-11",
+        "title": "Backups created, protected, maintained and tested"
+      }
+    ],
+    "designEffectiveness": "Ineffective",
+    "operatingEffectiveness": "Ineffective",
+    "lastTested": "2026-02-28",
+    "nextTest": "2026-08-31",
+    "testMethod": "Inspection",
+    "testNote": "No successful DR test evidenced in the last 12 months.",
+    "riskIds": [
+      "RSK-005",
+      "RSK-007"
+    ]
+  },
+  {
+    "id": "CTL-009",
+    "name": "Supplier security assessment",
+    "frameworks": [
+      "ISO 27001"
+    ],
+    "owner": "GRC Manager",
+    "status": "In progress",
+    "frameworkClauses": [
+      {
+        "framework": "ISO 27001",
+        "ref": "A.5.19",
+        "title": "Information security in supplier relationships"
+      },
+      {
+        "framework": "ISO 27001",
+        "ref": "A.5.21",
+        "title": "Managing information security in the ICT supply chain"
+      }
+    ],
+    "designEffectiveness": "Partially effective",
+    "operatingEffectiveness": "Partially effective",
+    "lastTested": "2026-06-30",
+    "nextTest": "2026-12-31",
+    "testMethod": "Inspection",
+    "testNote": "Assurance questionnaires issued to 60% of critical suppliers.",
+    "riskIds": [
+      "RSK-006"
+    ]
+  },
+  {
+    "id": "CTL-010",
+    "name": "AI acceptable use and approval workflow",
+    "frameworks": [
+      "ISO 42001",
+      "NIST AI RMF",
+      "ISO 27001"
+    ],
+    "owner": "Data Protection Officer",
+    "status": "Not implemented",
+    "frameworkClauses": [
+      {
+        "framework": "ISO 42001",
+        "ref": "A.2.2",
+        "title": "AI policy"
+      },
+      {
+        "framework": "ISO 42001",
+        "ref": "A.9.2",
+        "title": "Processes for responsible use of AI systems"
+      },
+      {
+        "framework": "NIST AI RMF",
+        "ref": "GOVERN 1.2",
+        "title": "Trustworthy AI characteristics integrated into policies"
+      },
+      {
+        "framework": "ISO 27001",
+        "ref": "A.5.10",
+        "title": "Acceptable use of information and other associated assets"
+      }
+    ],
+    "designEffectiveness": "Not assessed",
+    "operatingEffectiveness": "Ineffective",
+    "lastTested": null,
+    "nextTest": "2026-11-30",
+    "testMethod": "Not yet tested",
+    "testNote": "Control not yet operating; AI acceptable-use policy in draft.",
+    "riskIds": [
+      "RSK-004",
+      "RSK-009",
+      "RSK-012",
+      "RSK-014",
+      "RSK-016"
+    ]
+  },
+  {
+    "id": "CTL-011",
+    "name": "AI use-case inventory and risk assessment",
+    "frameworks": [
+      "ISO 42001",
+      "NIST AI RMF"
+    ],
+    "owner": "GRC Manager",
+    "status": "In progress",
+    "frameworkClauses": [
+      {
+        "framework": "ISO 42001",
+        "ref": "Cl. 6.1.2",
+        "title": "AI risk assessment"
+      },
+      {
+        "framework": "ISO 42001",
+        "ref": "A.5.2",
+        "title": "AI system impact assessment process"
+      },
+      {
+        "framework": "NIST AI RMF",
+        "ref": "GOVERN 1.6",
+        "title": "Mechanisms to inventory AI systems"
+      },
+      {
+        "framework": "NIST AI RMF",
+        "ref": "MAP 1.1",
+        "title": "Intended purpose and context established"
+      }
+    ],
+    "designEffectiveness": "Partially effective",
+    "operatingEffectiveness": "Partially effective",
+    "lastTested": "2026-07-15",
+    "nextTest": "2027-01-15",
+    "testMethod": "Walkthrough",
+    "testNote": "Inventory established; impact assessments completed for 4 of 7 use cases.",
+    "riskIds": [
+      "RSK-004",
+      "RSK-012",
+      "RSK-013",
+      "RSK-015"
+    ]
+  },
+  {
+    "id": "CTL-012",
+    "name": "Human oversight of AI-assisted decisions",
+    "frameworks": [
+      "ISO 42001",
+      "NIST AI RMF"
+    ],
+    "owner": "Business Process Owner",
+    "status": "Not implemented",
+    "frameworkClauses": [
+      {
+        "framework": "ISO 42001",
+        "ref": "A.9.2",
+        "title": "Processes for responsible use of AI systems"
+      },
+      {
+        "framework": "ISO 42001",
+        "ref": "A.3.2",
+        "title": "AI roles and responsibilities"
+      },
+      {
+        "framework": "NIST AI RMF",
+        "ref": "GOVERN 3.2",
+        "title": "Roles and responsibilities for human-AI configurations and oversight"
+      }
+    ],
+    "designEffectiveness": "Not assessed",
+    "operatingEffectiveness": "Ineffective",
+    "lastTested": null,
+    "nextTest": "2026-12-15",
+    "testMethod": "Not yet tested",
+    "testNote": "Control not yet operating; oversight roles not assigned.",
+    "riskIds": [
+      "RSK-009",
+      "RSK-013",
+      "RSK-014",
+      "RSK-015",
+      "RSK-016"
+    ]
+  },
+  {
+    "id": "CTL-013",
+    "name": "Security logging and monitoring (SIEM)",
+    "frameworks": [
+      "ISO 27001",
+      "NIST CSF"
+    ],
+    "owner": "CISO",
+    "status": "Implemented",
+    "frameworkClauses": [
+      {
+        "framework": "ISO 27001",
+        "ref": "A.8.15",
+        "title": "Logging"
+      },
+      {
+        "framework": "ISO 27001",
+        "ref": "A.8.16",
+        "title": "Monitoring activities"
+      },
+      {
+        "framework": "NIST CSF",
+        "ref": "DE.CM-01",
+        "title": "Networks and network services are monitored"
+      },
+      {
+        "framework": "NIST CSF",
+        "ref": "PR.PS-04",
+        "title": "Log records generated and made available for monitoring"
+      }
+    ],
+    "designEffectiveness": "Effective",
+    "operatingEffectiveness": "Effective",
+    "lastTested": "2026-09-01",
+    "nextTest": "2027-03-01",
+    "testMethod": "Re-performance",
+    "testNote": "Critical log sources onboarded; alert triage within SLA.",
+    "riskIds": [
+      "RSK-001",
+      "RSK-002",
+      "RSK-003",
+      "RSK-007",
+      "RSK-008",
+      "RSK-011",
+      "RSK-012",
+      "RSK-016"
+    ]
+  },
+  {
+    "id": "CTL-014",
+    "name": "Cryptographic key management",
+    "frameworks": [
+      "ISO 27001"
+    ],
+    "owner": "IT Operations Lead",
+    "status": "In progress",
+    "frameworkClauses": [
+      {
+        "framework": "ISO 27001",
+        "ref": "A.8.24",
+        "title": "Use of cryptography"
+      }
+    ],
+    "designEffectiveness": "Effective",
+    "operatingEffectiveness": "Not assessed",
+    "lastTested": null,
+    "nextTest": "2026-12-15",
+    "testMethod": "Not yet tested",
+    "testNote": "Key-management standard approved; operating test scheduled.",
+    "riskIds": []
+  },
+  {
+    "id": "CTL-015",
+    "name": "Secure configuration baselines",
+    "frameworks": [
+      "ISO 27001",
+      "NIST CSF",
+      "IEC 62443"
+    ],
+    "owner": "IT Operations Lead",
+    "status": "Implemented",
+    "frameworkClauses": [
+      {
+        "framework": "ISO 27001",
+        "ref": "A.8.9",
+        "title": "Configuration management"
+      },
+      {
+        "framework": "NIST CSF",
+        "ref": "PR.PS-01",
+        "title": "Configuration management practices established and applied"
+      },
+      {
+        "framework": "IEC 62443",
+        "ref": "SR 7.6",
+        "title": "Network and security configuration settings (62443-3-3)"
+      },
+      {
+        "framework": "IEC 62443",
+        "ref": "SR 7.7",
+        "title": "Least functionality (62443-3-3)"
+      }
+    ],
+    "designEffectiveness": "Effective",
+    "operatingEffectiveness": "Effective",
+    "lastTested": "2026-07-20",
+    "nextTest": "2027-01-20",
+    "testMethod": "Re-performance",
+    "testNote": "Baseline compliance 96% across sampled servers.",
+    "riskIds": [
+      "RSK-001",
+      "RSK-010",
+      "RSK-011"
+    ]
+  },
+  {
+    "id": "CTL-016",
+    "name": "Physical access control to OT environments",
+    "frameworks": [
+      "IEC 62443",
+      "NIST SP 800-82"
+    ],
+    "owner": "OT Security Engineer",
+    "status": "Implemented",
+    "frameworkClauses": [
+      {
+        "framework": "IEC 62443",
+        "ref": "62443-2-1",
+        "title": "Security programme requirements - physical access to IACS"
+      },
+      {
+        "framework": "NIST SP 800-82",
+        "ref": "Sec. 6",
+        "title": "Applying the CSF to OT (physical access protection)"
+      }
+    ],
+    "designEffectiveness": "Effective",
+    "operatingEffectiveness": "Effective",
+    "lastTested": "2026-05-12",
+    "nextTest": "2027-05-12",
+    "testMethod": "Observation",
+    "testNote": "Badge-controlled access to OT rooms; access logs reviewed monthly.",
+    "riskIds": [
+      "RSK-003"
+    ]
+  },
+  {
+    "id": "CTL-017",
+    "name": "Data classification and handling",
+    "frameworks": [
+      "ISO 27001"
+    ],
+    "owner": "Data Protection Officer",
+    "status": "In progress",
+    "frameworkClauses": [
+      {
+        "framework": "ISO 27001",
+        "ref": "A.5.12",
+        "title": "Classification of information"
+      },
+      {
+        "framework": "ISO 27001",
+        "ref": "A.5.13",
+        "title": "Labelling of information"
+      }
+    ],
+    "designEffectiveness": "Partially effective",
+    "operatingEffectiveness": "Partially effective",
+    "lastTested": "2026-06-10",
+    "nextTest": "2026-12-10",
+    "testMethod": "Inspection",
+    "testNote": "Classification scheme approved; labelling applied inconsistently.",
+    "riskIds": [
+      "RSK-004",
+      "RSK-011",
+      "RSK-012"
+    ]
+  },
+  {
+    "id": "CTL-018",
+    "name": "AI training-data governance and provenance",
+    "frameworks": [
+      "ISO 42001",
+      "NIST AI RMF"
+    ],
+    "owner": "Data Protection Officer",
+    "status": "Not implemented",
+    "frameworkClauses": [
+      {
+        "framework": "ISO 42001",
+        "ref": "A.7.4",
+        "title": "Quality of data for AI systems"
+      },
+      {
+        "framework": "ISO 42001",
+        "ref": "A.7.5",
+        "title": "Data provenance"
+      },
+      {
+        "framework": "NIST AI RMF",
+        "ref": "MEASURE 2.11",
+        "title": "Fairness and bias evaluated and documented"
+      }
+    ],
+    "designEffectiveness": "Not assessed",
+    "operatingEffectiveness": "Ineffective",
+    "lastTested": null,
+    "nextTest": "2027-01-31",
+    "testMethod": "Not yet tested",
+    "testNote": "Control not yet operating; provenance records not maintained.",
+    "riskIds": [
+      "RSK-012",
+      "RSK-013",
+      "RSK-015"
+    ]
+  },
+  {
+    "id": "CTL-019",
+    "name": "AI model performance and drift monitoring",
+    "frameworks": [
+      "ISO 42001",
+      "NIST AI RMF"
+    ],
+    "owner": "Business Process Owner",
+    "status": "In progress",
+    "frameworkClauses": [
+      {
+        "framework": "ISO 42001",
+        "ref": "A.6.2.6",
+        "title": "AI system operation and monitoring"
+      },
+      {
+        "framework": "NIST AI RMF",
+        "ref": "MEASURE 2.4",
+        "title": "AI system functionality and behaviour monitored in production"
+      },
+      {
+        "framework": "NIST AI RMF",
+        "ref": "MANAGE 4.1",
+        "title": "Post-deployment monitoring plans implemented"
+      }
+    ],
+    "designEffectiveness": "Partially effective",
+    "operatingEffectiveness": "Not assessed",
+    "lastTested": "2026-08-05",
+    "nextTest": "2026-10-05",
+    "testMethod": "Walkthrough",
+    "testNote": "Drift thresholds defined for 2 models; monitoring evidence pending.",
+    "riskIds": [
+      "RSK-009",
+      "RSK-013",
+      "RSK-014",
+      "RSK-015",
+      "RSK-016"
+    ]
+  }
+]
