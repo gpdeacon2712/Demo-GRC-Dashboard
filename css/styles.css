@@ -1,0 +1,2210 @@
+/* ==========================================================================
+   GRC & AI Governance Control Hub - styles.css
+
+   GRC & AI Governance Hub - Version 25 (Rockwell Automation demonstration)
+
+   Demonstration build derived from the Version 23.4 academic prototype.
+   Version 25 extensions were developed with AI assistance (Claude).
+   All data is fictional / synthetic. Not an official Rockwell Automation system.
+
+   The application uses Bootstrap’s mobile-first responsive foundation.
+   The custom stylesheet combines larger-screen enhancements with targeted 
+   small-screen adjustments for application-specific layouts and components.
+
+   Sections:
+     1. Design tokens
+     2. Base / reset
+     3. Prototype banner
+     4. Header and navigation
+     5. Layout helpers
+     6. Cards and dashboard
+     7. Status badges
+     8. Tables
+     9. Forms
+    10. Footer
+    11. Responsive media queries
+   ========================================================================== */
+
+
+/* 1. DESIGN TOKENS ---------------------------------------------------------
+   Shared colours, fonts and spacing are stored here so they can be reused
+   consistently throughout the stylesheet.
+*/
+
+:root {
+
+  /* Colour scheme used across the application. */
+  --colour-ink: #2d2a26;
+  --colour-body: #4a4642;
+  --colour-surface: #f7f4f2;
+  --colour-card: #ffffff;
+  --colour-line: #e4deda;
+  --colour-accent: #a6192e;
+  --colour-accent-dark: #7e1322;
+
+  /* Brand colours are kept separate from risk-status colours. */
+  --brand-red: #CD163F;
+  --brand-orange: #F58025;
+
+  /* Status colours.
+     Text labels are also used so status is not shown by colour alone. */
+  --status-green: #067647;
+  --status-amber: #92400e;
+  --status-red: #b42318;
+
+  /* These reuse the colours above so the same tokens are used everywhere
+     instead of repeating hex values. */
+  --colour-border: var(--colour-line);
+  --colour-muted: #52606d;
+  --colour-danger: var(--status-red);
+  --colour-warning: var(--status-amber);
+  --shadow-small: 0 3px 12px rgba(45, 42, 38, 0.06);
+
+  /* Typography */
+  --font-body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Courier New", monospace;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+
+  --radius: 8px;
+}
+
+
+/* 2. BASE / RESET ---------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--colour-body);
+  background-color: var(--colour-surface);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--colour-ink);
+  line-height: 1.2;
+  margin-top: 0;
+}
+
+/* Main headings similar to Rockwell's Template and branding use the maroon accent while smaller headings use
+   the standard dark text colour. */
+h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--colour-accent-dark);
+}
+
+h2 {
+  font-size: 1.25rem;
+}
+
+h3 {
+  font-size: 1.05rem;
+}
+
+a {
+  color: var(--colour-accent);
+}
+
+/* Provides feedback when a user moves the mouse over a link. */
+a:hover {
+  color: var(--colour-accent-dark);
+}
+
+/* Visible keyboard focus for interactive elements. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--colour-accent);
+  outline-offset: 2px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Reduces animation for users who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* 3. PROTOTYPE BANNER -------------------------------------------------------
+   Makes it clear that the application is a prototype and uses sample data.
+*/
+
+.prototype-banner {
+  background-color: var(--colour-accent);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: var(--space-1) var(--space-3);
+}
+
+
+/* 4. HEADER AND NAVIGATION --------------------------------------------------
+   The old custom navigation (.site-header, .nav-toggle, .site-nav and its
+   variants) was removed here - it was replaced by Bootstrap 5's navbar
+   component and none of those class names appear in the current HTML.
+   The previous version is available in the project's git history. */
+
+/* Session indicator added by profile.js after profile changes. */
+.session-indicator {
+  margin: var(--space-1) 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--colour-body);
+}
+
+
+/* 5. LAYOUT HELPERS --------------------------------------------------------- */
+
+.container {
+  padding: var(--space-3);
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+/* Introductory panel with a gradient and decorative background image.
+   The background image is decorative and does not need alternative text. */
+.page-intro {
+  margin-bottom: var(--space-4);
+  background:
+    url("../images/bg-hero-mesh.svg") right center / cover no-repeat,
+    linear-gradient(100deg, var(--colour-accent-dark), #c0143c);
+  border-bottom: 4px solid var(--brand-orange);
+  border-radius: var(--radius);
+  padding: var(--space-4) var(--space-3);
+}
+
+.page-intro h1,
+.page-intro p {
+  color: #ffffff;
+}
+
+.page-intro p {
+  margin-bottom: 0;
+  max-width: 60ch;
+}
+
+/* AI version of the introductory panel using different artwork. */
+.page-intro--ai {
+  background:
+    url("../images/bg-hero-neural.svg") right center / cover no-repeat,
+    linear-gradient(100deg, var(--colour-accent-dark), #c0143c);
+}
+
+/* Optional background texture.
+   It is currently disabled to keep the page background simple.
+
+body {
+  background-image: url("images/bg-hexgrid.svg");
+}
+*/
+
+
+/* 6. CARDS AND DASHBOARD ----------------------------------------------------
+   Cards use one column on small screens and more columns on larger screens.
+*/
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+.card {
+  background-color: var(--colour-card);
+  border: 1px solid var(--colour-line);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+}
+
+.card .metric {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--colour-accent-dark);
+  display: block;
+}
+
+.card .metric-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Monospace styling for identifiers such as control IDs and CVE IDs. */
+.ref-id {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background-color: var(--colour-surface);
+  padding: 0 var(--space-1);
+  border-radius: 4px;
+}
+
+
+/* 7. STATUS BADGES -----------------------------------------------------------
+   Status badges use both colour and text so the meaning does not depend
+   on colour alone.
+*/
+
+.badge {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+  border: 1.5px solid currentColor;
+}
+
+.badge--ok {
+  color: var(--status-green);
+}
+
+.badge--warn {
+  color: var(--status-amber);
+}
+
+.badge--risk {
+  color: var(--status-red);
+}
+
+
+/* 8. TABLES ---------------------------------------------------------------- */
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--colour-card);
+  border: 1px solid var(--colour-line);
+  border-radius: var(--radius);
+  font-size: 0.92rem;
+}
+
+.data-table caption {
+  text-align: left;
+  font-weight: 600;
+  color: var(--colour-ink);
+  padding: var(--space-2) 0;
+}
+
+.data-table th,
+.data-table td {
+  text-align: left;
+  padding: var(--space-2);
+  border-bottom: 1px solid var(--colour-line);
+}
+
+.data-table th {
+  background-color: var(--colour-surface);
+  color: var(--colour-ink);
+}
+
+/* Alternating row colours make long tables easier to read. */
+.data-table tbody tr:nth-child(even) {
+  background-color: #faf7f5;
+}
+
+.data-table tbody tr:hover {
+  background-color: #f6ecea;
+}
+
+
+/* 9. FORMS ----------------------------------------------------------------- */
+
+form {
+  background-color: var(--colour-card);
+  border: 1px solid var(--colour-line);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+}
+
+fieldset {
+  border: 1px solid var(--colour-line);
+  border-radius: var(--radius);
+  margin: 0 0 var(--space-3);
+  padding: var(--space-3);
+}
+
+legend {
+  font-weight: 600;
+  color: var(--colour-ink);
+  padding: 0 var(--space-1);
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  color: var(--colour-ink);
+  margin-bottom: var(--space-1);
+}
+
+/* Styles common form controls consistently. */
+input[type="text"],
+input[type="email"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  padding: var(--space-2);
+  border: 1.5px solid var(--colour-line);
+  border-radius: var(--radius);
+  background-color: #ffffff;
+  margin-bottom: var(--space-3);
+}
+
+/* Shows invalid fields after the user has interacted with them.
+   JavaScript provides the related error message. */
+input:user-invalid,
+select:user-invalid,
+textarea:user-invalid {
+  border-color: var(--status-red);
+}
+
+.radio-option,
+.checkbox-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+/* Labels for radio buttons and checkboxes stay beside the control. */
+.radio-option label,
+.checkbox-option label {
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+button[type="submit"] {
+  font: inherit;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--colour-accent);
+  border: none;
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-4);
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--colour-accent-dark);
+}
+
+.form-hint {
+  font-size: 0.85rem;
+  margin-top: calc(-1 * var(--space-2));
+  margin-bottom: var(--space-3);
+}
+
+/* Area used for API results and validation messages.
+   aria-live in the HTML allows screen readers to announce updates. */
+.results-region:not(:empty) {
+  margin-top: var(--space-3);
+  padding: var(--space-3);
+  background-color: var(--colour-card);
+  border: 1px solid var(--colour-line);
+  border-left: 4px solid var(--colour-accent);
+  border-radius: var(--radius);
+}
+
+
+/* Risk heat map and bubble chart.
+   Risk level is shown using colour together with text and position. */
+
+.heatmap-table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 34rem;
+  font-size: 0.85rem;
+}
+
+.heatmap-table caption {
+  text-align: left;
+  font-size: 0.85rem;
+  margin-bottom: var(--space-2);
+}
+
+.heatmap-table th {
+  font-weight: 600;
+  padding: var(--space-1) var(--space-2);
+  color: var(--colour-ink);
+}
+
+.heatmap-table td.heat {
+  border: 2px solid var(--colour-card);
+  padding: var(--space-2);
+  text-align: center;
+  color: #ffffff;
+  min-width: 3.2rem;
+  height: 3.2rem;
+}
+
+.heat--low {
+  background-color: var(--status-green);
+}
+
+.heat--medium {
+  background-color: var(--status-amber);
+}
+
+.heat--high {
+  background-color: var(--status-red);
+}
+
+/* Empty heat-map cells use lighter colours with dark text.
+   This keeps the scores readable and maintains suitable contrast. */
+.heatmap-table td.heat:not(.heat--occupied) {
+  color: var(--colour-ink);
+  font-weight: 400;
+}
+
+.heat--low:not(.heat--occupied) {
+  background-color: #b9d9cb;
+}
+
+.heat--medium:not(.heat--occupied) {
+  background-color: #e0cabc;
+}
+
+.heat--high:not(.heat--occupied) {
+  background-color: #eac1be;
+}
+
+.heatmap-table td.heat--occupied {
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+.heat-legend {
+  font-size: 0.85rem;
+  margin-top: var(--space-2);
+}
+
+.heat-swatch {
+  display: inline-block;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 3px;
+  vertical-align: -0.1rem;
+}
+
+.bubble-figure {
+  margin: 0 0 var(--space-4);
+}
+
+.bubble-figure figcaption {
+  font-size: 0.85rem;
+  max-width: 60ch;
+}
+
+.bubble-chart {
+  width: 100%;
+  max-width: 34rem;
+  height: auto;
+  background: var(--colour-card);
+  border: 1px solid var(--colour-line);
+  border-radius: var(--radius);
+}
+
+.bubble-grid {
+  stroke: var(--colour-line);
+  stroke-width: 1;
+}
+
+.bubble-tick,
+.bubble-axis {
+  font-family: var(--font-body);
+  font-size: 13px;
+  fill: var(--colour-body);
+}
+
+.bubble-axis {
+  font-weight: 600;
+  fill: var(--colour-ink);
+}
+
+.bubble-count {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  fill: #ffffff;
+}
+
+/* Toggle button appearance follows its aria-pressed state. */
+.view-toggle {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.toggle-button {
+  font: inherit;
+  font-weight: 600;
+  padding: var(--space-1) var(--space-3);
+  border: 2px solid var(--colour-accent);
+  border-radius: var(--radius);
+  background-color: var(--colour-card);
+  color: var(--colour-accent);
+  cursor: pointer;
+}
+
+.toggle-button[aria-pressed="true"] {
+  background-color: var(--colour-accent);
+  color: #ffffff;
+}
+
+.toggle-button:hover {
+  background-color: var(--colour-accent-dark);
+  border-color: var(--colour-accent-dark);
+  color: #ffffff;
+}
+
+.add-risk-button {
+  font: inherit;
+  font-weight: 600;
+  padding: var(--space-1) var(--space-3);
+  border: none;
+  border-radius: var(--radius);
+  background-color: var(--colour-accent);
+  color: #ffffff;
+  cursor: pointer;
+  margin-top: var(--space-2);
+}
+
+.add-risk-button:hover:not(:disabled) {
+  background-color: var(--colour-accent-dark);
+}
+
+.add-risk-button:disabled {
+  background-color: var(--colour-line);
+  color: var(--colour-body);
+  cursor: default;
+}
+
+.table-actions {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin: var(--space-2) 0;
+}
+
+
+/* 10. FOOTER --------------------------------------------------------------- */
+
+.site-footer {
+  margin-top: var(--space-5);
+  padding: var(--space-3);
+  border-top: 1px solid var(--colour-line);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+
+/* 11. MEDIA QUERIES - MOBILE FIRST -----------------------------------------
+   Base styles are for small screens. These media queries adjust the
+   layout for larger screens.
+*/
+
+@media (min-width: 40em) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 60em) {
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .container {
+    padding: var(--space-4);
+  }
+}
+
+
+/* Dynamic content and validation feedback. */
+
+.empty-state {
+  text-align: center;
+  font-style: italic;
+}
+
+.results-region {
+  margin: var(--space-3) 0;
+}
+
+.error-message {
+  color: var(--status-red);
+  font-weight: 600;
+}
+
+.success-message {
+  color: var(--status-green);
+  font-weight: 600;
+}
+
+.result-card,
+.usecase-card {
+  background: var(--colour-card);
+  border: 1px solid var(--colour-line);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+#usecase-list {
+  list-style: none;
+  padding: 0;
+}
+
+.result-details {
+  display: grid;
+  grid-template-columns: minmax(10rem, 1fr) 2fr;
+  gap: var(--space-1) var(--space-3);
+}
+
+.result-details dt {
+  font-weight: 700;
+  color: var(--colour-ink);
+}
+
+.result-details dd {
+  margin: 0;
+}
+
+
+/* Relationship views. */
+
+.reference-list {
+  display: grid;
+  gap: .3rem;
+  min-width: 16rem;
+}
+
+.linked-reference {
+  display: block;
+  font-size: .88rem;
+  line-height: 1.35;
+}
+
+.mapped-controls {
+  font-size: .9rem;
+  margin-top: .55rem;
+}
+
+.data-table td {
+  vertical-align: top;
+}
+
+
+/* Governance Support Centre. */
+
+.notice {
+  margin: 1.25rem 0;
+  padding: 1rem 1.15rem;
+  border-left: 0.35rem solid var(--colour-accent);
+  background: var(--colour-card);
+  box-shadow: var(--shadow-small);
+}
+
+.notice--warning {
+  border-left-color: #9a6700;
+}
+
+.consent-option {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+  margin: 1rem 0;
+  font-weight: 600;
+}
+
+.consent-option input {
+  margin-top: 0.2rem;
+}
+
+.support-request-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.support-request-card {
+  border-left: 0.35rem solid var(--colour-accent);
+}
+
+.support-metadata {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+.support-contact-grid .card h3 {
+  margin-top: 0;
+}
+
+.faq-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.faq-list details {
+  background: var(--colour-card);
+  border: 1px solid var(--colour-border);
+  border-radius: var(--radius);
+  padding: 0.85rem 1rem;
+}
+
+.faq-list summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.faq-list details[open] summary {
+  margin-bottom: 0.65rem;
+}
+
+.context-support {
+  margin-top: 2rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--colour-border);
+  border-radius: var(--radius);
+  background: var(--colour-card);
+}
+
+.context-support h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+
+
+/* Icons and governance insight panels. */
+
+.nav-icon {
+  font-size: 1.05rem;
+  line-height: 1;
+  flex: 0 0 auto;
+}
+
+.page-title-icon {
+  display: inline-block;
+  margin-right: 0.25rem;
+}
+
+.section-icon {
+  color: var(--colour-accent);
+  margin-right: 0.35rem;
+}
+
+.governance-insight {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
+  background: var(--colour-card);
+  border: 1px solid var(--colour-line);
+  border-left: 5px solid #2563eb;
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  margin: 0 0 var(--space-4);
+  box-shadow: 0 3px 12px rgba(45, 42, 38, 0.06);
+}
+
+.governance-insight > .insight-icon {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 1.35rem;
+}
+
+.governance-insight h2 {
+  font-size: 0.9rem;
+  margin: 0 0 0.15rem;
+}
+
+.governance-insight p {
+  margin: 0;
+}
+
+.insight-controls {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.insight-controls button {
+  width: 2.1rem;
+  height: 2.1rem;
+  padding: 0;
+  border: 1px solid var(--colour-line);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--colour-ink);
+  cursor: pointer;
+}
+
+.insight-controls button:hover {
+  background: var(--colour-surface);
+}
+
+
+/* Feature cards use different accent colours for each area. */
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+.feature-card {
+  --module-accent: var(--colour-accent);
+  --module-soft: #f8e8eb;
+
+  position: relative;
+  overflow: hidden;
+  background: var(--colour-card);
+  border: 1px solid var(--colour-line);
+  border-top: 5px solid var(--module-accent);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  box-shadow: 0 3px 12px rgba(45, 42, 38, 0.06);
+}
+
+.feature-card--risk {
+  --module-accent: #b42318;
+  --module-soft: #fee4e2;
+}
+
+.feature-card--control {
+  --module-accent: #067647;
+  --module-soft: #dcfae6;
+}
+
+.feature-card--ai {
+  --module-accent: #7e22ce;
+  --module-soft: #f3e8ff;
+}
+
+.feature-card--cve {
+  --module-accent: #1d4ed8;
+  --module-soft: #dbeafe;
+}
+
+.feature-card--support {
+  --module-accent: #0f766e;
+  --module-soft: #ccfbf1;
+}
+
+.feature-card .feature-icon {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  background: var(--module-soft);
+  color: var(--module-accent);
+  font-size: 1.5rem;
+  margin-bottom: var(--space-2);
+}
+
+.feature-card h3 {
+  margin-bottom: var(--space-2);
+}
+
+.feature-card p {
+  min-height: 4.8em;
+}
+
+.feature-card .button-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #fff;
+  background: var(--module-accent);
+  text-decoration: none;
+  border-radius: var(--radius);
+  padding: 0.55rem 0.8rem;
+  font-weight: 600;
+}
+
+.feature-card .button-link:hover {
+  color: #fff;
+  filter: brightness(0.9);
+}
+
+.metric-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: #f3f4f6;
+  color: var(--colour-accent-dark);
+  font-size: 1.1rem;
+  margin-bottom: var(--space-2);
+}
+
+@media (min-width: 40em) {
+  .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 60em) {
+  .feature-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 35em) {
+  .governance-insight {
+    grid-template-columns: auto 1fr;
+  }
+
+  .insight-controls {
+    grid-column: 1 / -1;
+    justify-self: end;
+  }
+}
+
+
+/* Prominent governance insight panel.
+   Dark text is used against the lighter background for readability. */
+
+.governance-insight--prominent {
+  border: 0;
+  border-left: 0;
+  box-shadow: 0 8px 24px rgba(11, 42, 74, 0.14);
+  padding: 1rem 1.2rem;
+}
+
+.governance-insight--prominent h2,
+.governance-insight--prominent p {
+  color: var(--colour-ink);
+}
+
+.governance-insight--prominent > .insight-icon {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.governance-insight--prominent .insight-controls button {
+  color: #0b2a4a;
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(11, 42, 74, 0.35);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.governance-insight--prominent .insight-controls button:hover {
+  background: #ffffff;
+}
+
+
+/* Register panels use scrolling to keep large tables manageable. */
+
+.register-scroll {
+  position: relative;
+  max-width: 100%;
+  margin: 0 0 var(--space-3);
+  border: 1px solid var(--colour-line);
+  border-radius: var(--radius);
+  background: var(--colour-card);
+  overflow: auto;
+  scrollbar-gutter: stable;
+  box-shadow: 0 3px 12px rgba(45, 42, 38, 0.05);
+}
+
+.register-scroll--risks,
+.register-scroll--controls {
+  max-height: 34rem;
+}
+
+.register-scroll--ai {
+  max-height: 30rem;
+  padding: 0 var(--space-2) var(--space-2);
+}
+
+.register-scroll:focus {
+  outline: 3px solid var(--colour-accent);
+  outline-offset: 3px;
+}
+
+.register-scroll .data-table {
+  margin: 0;
+  min-width: 58rem;
+  border: 0;
+}
+
+.register-scroll .data-table caption {
+  background: var(--colour-card);
+  padding: var(--space-2) var(--space-3);
+}
+
+.register-scroll .data-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: var(--colour-accent-dark);
+  color: #fff;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, .14);
+}
+
+.scroll-hint {
+  margin: 0;
+  padding: .55rem var(--space-3);
+  border-bottom: 1px solid var(--colour-line);
+  background: var(--colour-surface);
+  color: var(--colour-muted);
+  font-size: .85rem;
+}
+
+.register-scroll--ai .scroll-hint {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  margin: 0 calc(var(--space-2) * -1) var(--space-2);
+}
+
+.register-scroll--ai #usecase-list {
+  margin: 0;
+}
+
+.register-scroll--ai .usecase-card:last-child {
+  margin-bottom: 0;
+}
+
+/* On smaller screens, tables scroll horizontally instead. */
+@media (max-width: 47.99em) {
+  .register-scroll {
+    max-height: none;
+    overflow-x: auto;
+    overflow-y: visible;
+    scrollbar-gutter: auto;
+  }
+
+  .register-scroll--ai {
+    padding-bottom: 0;
+  }
+
+  .register-scroll--ai .scroll-hint {
+    position: static;
+  }
+}
+
+
+/* AI risk relationships and framework coverage. */
+
+.dashboard-panel {
+  margin: var(--space-4) 0;
+}
+
+.framework-coverage {
+  display: grid;
+  gap: .85rem;
+}
+
+.framework-row {
+  display: grid;
+  grid-template-columns: minmax(10rem, 1fr) minmax(12rem, 1.5fr);
+  align-items: center;
+  gap: .35rem 1rem;
+  padding: .9rem 1rem;
+  background: var(--colour-card);
+  border: 1px solid var(--colour-line);
+  border-radius: var(--radius);
+}
+
+.framework-row h3,
+.framework-row p {
+  margin: 0;
+}
+
+.framework-row progress {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: .85rem;
+  accent-color: var(--colour-accent);
+}
+
+.record-link {
+  color: var(--colour-accent-dark);
+  text-decoration-thickness: .08em;
+  text-underline-offset: .16em;
+}
+
+.record-link:hover {
+  color: var(--colour-accent);
+}
+
+.mapped-risks {
+  font-size: .9rem;
+  margin-top: .45rem;
+}
+
+/* Highlights a record when it is opened from a related link. */
+.linked-target {
+  animation: linked-record-pulse 2.2s ease-out;
+  outline: 3px solid var(--colour-accent);
+  outline-offset: -3px;
+}
+
+@keyframes linked-record-pulse {
+  0%,
+  35% {
+    background: #fff4c2;
+  }
+
+  100% {
+    background: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .linked-target {
+    animation: none;
+    background: #fff4c2;
+  }
+}
+
+@media (max-width: 42em) {
+  .framework-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* Dashboard relationship and review panels. */
+
+.dashboard-overview-grid {
+  display: grid;
+  gap: var(--space-4);
+  margin: var(--space-4) 0;
+}
+
+.relationship-health {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+  gap: .55rem;
+}
+
+.relationship-node {
+  display: grid;
+  place-items: center;
+  min-height: 6.5rem;
+  padding: .8rem;
+  text-align: center;
+  border: 1px solid var(--colour-line);
+  border-radius: var(--radius);
+  background: var(--colour-card);
+}
+
+.relationship-node a {
+  color: inherit;
+  text-decoration-thickness: .12em;
+  text-underline-offset: .18em;
+}
+
+.relationship-node .relationship-value {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--colour-accent);
+}
+
+.relationship-node .relationship-label {
+  display: block;
+  margin-top: .2rem;
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.relationship-arrow {
+  display: none;
+  align-self: center;
+  justify-self: center;
+  color: var(--colour-muted);
+  font-size: 1.25rem;
+}
+
+.upcoming-reviews {
+  display: grid;
+  gap: .65rem;
+}
+
+.review-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: .25rem 1rem;
+  align-items: center;
+  padding: .75rem .85rem;
+  border-left: 4px solid var(--colour-accent);
+  background: var(--colour-card);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.review-item h3,
+.review-item p {
+  margin: 0;
+}
+
+.review-item h3 {
+  font-size: 1rem;
+}
+
+.review-date {
+  font-family: var(--font-mono);
+  font-size: .9rem;
+}
+
+.review-status {
+  grid-column: 1 / -1;
+  color: var(--colour-muted);
+  font-size: .86rem;
+}
+
+.review-item--overdue {
+  border-left-color: var(--colour-danger);
+}
+
+.review-item--soon {
+  border-left-color: var(--colour-warning);
+}
+
+.panel-action {
+  margin-bottom: 0;
+}
+
+@media (min-width: 52em) {
+  .dashboard-overview-grid {
+    grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .8fr);
+  }
+
+  .relationship-health {
+    grid-template-columns:
+      minmax(0, 1fr)
+      auto
+      minmax(0, 1fr)
+      auto
+      minmax(0, 1fr)
+      auto
+      minmax(0, 1fr);
+  }
+
+  .relationship-arrow {
+    display: block;
+  }
+}
+
+@media (max-width: 32em) {
+  .relationship-health {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .review-item {
+    grid-template-columns: 1fr;
+  }
+
+  .review-status {
+    grid-column: auto;
+  }
+}
+
+
+/* ==========================================================================
+   BOOTSTRAP 5 LAYOUT
+
+   Bootstrap provides the responsive navigation, grid, tables, buttons and
+   form controls. These rules keep the application's own GRC styling.
+   ========================================================================== */
+
+.skip-link {
+  position: fixed;
+  top: -5rem;
+  left: 1rem;
+  z-index: 2000;
+  padding: .75rem 1rem;
+  color: #fff;
+  background: #000;
+  border-radius: .375rem;
+}
+
+.skip-link:focus {
+  top: 1rem;
+  color: #fff;
+}
+
+.navbar {
+  --bs-navbar-active-color: #fff;
+}
+
+.navbar .nav-link {
+  border-radius: .375rem;
+  padding-inline: .75rem;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus-visible {
+  background: rgba(255, 255, 255, .12);
+  color: #fff;
+}
+
+.navbar .nav-link.active {
+  background: var(--colour-accent);
+  color: #fff;
+}
+
+main.container {
+  max-width: 1200px;
+}
+
+.page-intro {
+  background: linear-gradient(135deg, #fff 0%, #fff8f5 100%) !important;
+}
+
+.page-intro h1 {
+  margin-bottom: .75rem;
+}
+
+/* Keeps the custom card grids working alongside Bootstrap. */
+.card-grid.row,
+.feature-grid.row,
+.dashboard-overview-grid.row {
+  display: grid;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.dashboard-panel.card,
+.feature-card.card,
+.governance-insight.card,
+.profile-card.card,
+.form-panel.card,
+.support-card.card,
+.register-panel.card {
+  padding: 1.5rem;
+  background-color: var(--colour-card);
+  border-radius: .75rem;
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--colour-accent);
+  --bs-btn-border-color: var(--colour-accent);
+  --bs-btn-hover-bg: var(--colour-accent-dark);
+  --bs-btn-hover-border-color: var(--colour-accent-dark);
+  --bs-btn-active-bg: var(--colour-accent-dark);
+  --bs-btn-active-border-color: var(--colour-accent-dark);
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--colour-accent);
+  --bs-btn-border-color: var(--colour-accent);
+  --bs-btn-hover-bg: var(--colour-accent);
+  --bs-btn-hover-border-color: var(--colour-accent);
+}
+
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+  border-color: var(--colour-accent);
+  box-shadow: 0 0 0 .25rem rgba(166, 25, 46, .2);
+}
+
+.table-responsive {
+  border: 1px solid var(--colour-line);
+  border-radius: .5rem;
+  background: #fff;
+}
+
+.table {
+  margin-bottom: 0;
+}
+
+.table thead th {
+  white-space: nowrap;
+}
+
+.prototype-banner {
+  position: relative;
+  z-index: 1031;
+}
+
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    padding-top: .75rem;
+  }
+
+  .navbar-nav {
+    gap: .25rem;
+  }
+}
+
+
+/* Page headers use shared artwork with different backgrounds for each
+   section. */
+
+.page-header {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: #28546f;
+  background-image:
+    linear-gradient(
+      100deg,
+      rgba(255, 255, 255, .96) 0%,
+      rgba(255, 255, 255, .86) 46%,
+      rgba(40, 84, 111, .22) 74%,
+      rgba(20, 54, 75, .08) 100%
+    ),
+    url("../images/bg-hero-mesh.svg"),
+    linear-gradient(135deg, #28546f, #17384d);
+  background-position: center, right center;
+  background-size: cover, min(46rem, 72%) auto, cover;
+  background-repeat: no-repeat;
+}
+
+.page-header--dashboard,
+.page-header--risk {
+  background-image:
+    linear-gradient(
+      100deg,
+      rgba(255, 255, 255, .96) 0%,
+      rgba(255, 255, 255, .86) 46%,
+      rgba(30, 72, 96, .20) 74%,
+      rgba(20, 54, 75, .08) 100%
+    ),
+    url("../images/bg-hero-circuit.svg"),
+    linear-gradient(135deg, #28546f, #17384d);
+}
+
+.page-header--ai {
+  background-image:
+    linear-gradient(
+      100deg,
+      rgba(255, 255, 255, .96) 0%,
+      rgba(255, 255, 255, .86) 46%,
+      rgba(54, 62, 126, .20) 74%,
+      rgba(34, 41, 96, .08) 100%
+    ),
+    url("../images/bg-hero-neural.svg"),
+    linear-gradient(135deg, #424b9b, #242b68);
+}
+
+.page-header--controls,
+.page-header--support,
+.page-header--profile {
+  background-image:
+    linear-gradient(
+      100deg,
+      rgba(255, 255, 255, .96) 0%,
+      rgba(255, 255, 255, .86) 46%,
+      rgba(40, 84, 111, .20) 74%,
+      rgba(23, 56, 77, .08) 100%
+    ),
+    url("../images/bg-hero-mesh.svg"),
+    linear-gradient(135deg, #28546f, #17384d);
+}
+
+.page-header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  border-left: .28rem solid
+    color-mix(
+      in srgb,
+      var(--accent, #f65722) 78%,
+      transparent
+    );
+}
+
+.page-header .card-body {
+  min-height: 0;
+}
+
+.page-header-icon {
+  display: inline-flex;
+  width: 3.25rem;
+  height: 3.25rem;
+  flex: 0 0 3.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.8rem;
+  color: #fff;
+  background:
+    linear-gradient(
+      135deg,
+      var(--accent, #f65722),
+      var(--accent-dark, #b93412)
+    );
+  box-shadow: 0 0.35rem 0.9rem rgba(0, 0, 0, .14);
+  font-size: 1.45rem;
+}
+
+.page-header-copy {
+  max-width: 52rem;
+}
+
+.page-header-copy h1 {
+  margin-top: 0;
+  line-height: 1.15;
+}
+
+.page-header-copy p {
+  max-width: 68ch;
+}
+
+.page-header-badges .badge {
+  color: var(--text, #1f2933) !important;
+  font-weight: 600;
+  background-color: rgba(255, 255, 255, .84) !important;
+  backdrop-filter: blur(2px);
+}
+
+.page-header-actions {
+  flex: 0 0 auto;
+}
+
+.page-header-actions .btn {
+  white-space: nowrap;
+}
+
+@media (max-width: 767.98px) {
+  .page-header {
+    background-size: cover, auto 100%, cover;
+    background-position: center, right top, center;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .page-header {
+    background-image:
+      linear-gradient(
+        135deg,
+        rgba(246, 87, 34, .08),
+        rgba(255, 255, 255, .98)
+      );
+  }
+
+  .page-header-icon {
+    width: 2.75rem;
+    height: 2.75rem;
+    flex-basis: 2.75rem;
+    font-size: 1.2rem;
+  }
+
+  .page-header-actions {
+    display: grid !important;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .page-header-actions .btn {
+    width: 100%;
+  }
+}
+
+
+/* Feature panels use decorative background artwork with gradients to
+   keep text readable. */
+
+.artwork-panel {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: var(--colour-card);
+  background-repeat: no-repeat;
+  background-position: center, right center, center;
+  background-size: cover, min(34rem, 62%) auto, cover;
+}
+
+.artwork-panel--circuit {
+  background-image:
+    linear-gradient(
+      105deg,
+      rgba(255, 255, 255, .98) 0%,
+      rgba(255, 255, 255, .92) 40%,
+      rgba(255, 255, 255, .70) 62%,
+      rgba(38, 88, 113, .18) 82%,
+      rgba(24, 55, 75, .08) 100%
+    ),
+    url("../images/bg-hero-circuit.svg"),
+    linear-gradient(135deg, #3b728e, #17384d);
+}
+
+.artwork-panel--neural {
+  background-image:
+    linear-gradient(
+      105deg,
+      rgba(255, 255, 255, .98) 0%,
+      rgba(255, 255, 255, .92) 40%,
+      rgba(255, 255, 255, .70) 62%,
+      rgba(86, 79, 156, .18) 82%,
+      rgba(40, 42, 98, .08) 100%
+    ),
+    url("../images/bg-hero-neural.svg"),
+    linear-gradient(135deg, #6864b5, #292d72);
+}
+
+.artwork-panel--mesh {
+  background-image:
+    linear-gradient(
+      105deg,
+      rgba(255, 255, 255, .98) 0%,
+      rgba(255, 255, 255, .92) 40%,
+      rgba(255, 255, 255, .70) 62%,
+      rgba(42, 99, 126, .18) 82%,
+      rgba(24, 55, 75, .08) 100%
+    ),
+    url("../images/bg-hero-mesh.svg"),
+    linear-gradient(135deg, #41758d, #183b50);
+}
+
+.artwork-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .28);
+}
+
+.artwork-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.cve-lookup-panel {
+  margin-top: var(--space-4);
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  border-left: .3rem solid #1d4ed8;
+}
+
+@media (max-width: 575.98px) {
+  .artwork-panel {
+    background-image: none;
+  }
+}
+
+/* Keeps dashboard links visible below the navigation when jumping
+   directly to a section. */
+#dashboard-analytics {
+  scroll-margin-top: 6rem;
+}
+
+
+/* API loading, validation and print styles. */
+
+.results-region[aria-busy="true"] {
+  position: relative;
+  min-height: 4rem;
+  padding: 1rem 1rem 1rem 3.25rem;
+  border-left: .3rem solid var(--colour-accent);
+  background:
+    color-mix(
+      in srgb,
+      var(--colour-accent) 8%,
+      white
+    );
+}
+
+/* Loading indicator shown while an API request is running. */
+.results-region[aria-busy="true"]::before {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  top: 1.1rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: .2rem solid rgba(36, 85, 122, .25);
+  border-top-color: var(--colour-accent);
+  border-radius: 50%;
+  animation: v21-spin .8s linear infinite;
+}
+
+@keyframes v21-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.validation-error {
+  margin-top: .35rem;
+}
+
+.validation-error[hidden] {
+  display: none !important;
+}
+
+[aria-invalid="true"] {
+  border-color: var(--status-red) !important;
+}
+
+.api-suggestion-status {
+  margin-top: .35rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .results-region[aria-busy="true"]::before {
+    animation: none;
+  }
+}
+
+
+/* Print layout removes navigation and controls and simplifies the page. */
+
+@media print {
+
+  @page {
+    margin: 12mm;
+  }
+
+  .prototype-banner,
+  .navbar,
+  .site-footer,
+  .skip-link,
+  .page-header-actions,
+  .page-header-badges,
+  .table-actions,
+  .view-toggle,
+  .context-support,
+  form,
+  button,
+  .scroll-hint,
+  #bubble-view {
+    display: none !important;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 10pt;
+  }
+
+  main.container,
+  .container,
+  .register-scroll,
+  .card,
+  .page-header {
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    margin: 0 0 8mm !important;
+    padding: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    background: #fff !important;
+  }
+
+  .page-header-icon {
+    display: none !important;
+  }
+
+  h1,
+  h2,
+  h3 {
+    color: #000 !important;
+    break-after: avoid;
+  }
+
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 8.5pt;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr {
+    break-inside: avoid;
+  }
+
+  th,
+  td {
+    border: 1px solid #555 !important;
+    padding: 2.5mm !important;
+    color: #000 !important;
+    background: #fff !important;
+  }
+
+  a {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 8pt;
+  }
+}
+
+
+/* Governance contact cards and page-header artwork. */
+
+.page-header {
+  background-image:
+    linear-gradient(
+      100deg,
+      rgba(255, 255, 255, .93) 0%,
+      rgba(255, 255, 255, .76) 43%,
+      rgba(40, 84, 111, .14) 68%,
+      rgba(20, 54, 75, .03) 100%
+    ),
+    url("../images/bg-hero-mesh.svg"),
+    linear-gradient(135deg, #28546f, #17384d);
+}
+
+.page-header--dashboard,
+.page-header--risk {
+  background-image:
+    linear-gradient(
+      100deg,
+      rgba(255, 255, 255, .93) 0%,
+      rgba(255, 255, 255, .76) 43%,
+      rgba(30, 72, 96, .13) 68%,
+      rgba(20, 54, 75, .03) 100%
+    ),
+    url("../images/bg-hero-circuit.svg"),
+    linear-gradient(135deg, #28546f, #17384d);
+}
+
+.page-header--ai {
+  background-image:
+    linear-gradient(
+      100deg,
+      rgba(255, 255, 255, .93) 0%,
+      rgba(255, 255, 255, .76) 43%,
+      rgba(54, 62, 126, .13) 68%,
+      rgba(34, 41, 96, .03) 100%
+    ),
+    url("../images/bg-hero-neural.svg"),
+    linear-gradient(135deg, #424b9b, #242b68);
+}
+
+.page-header--controls,
+.page-header--support,
+.page-header--profile {
+  background-image:
+    linear-gradient(
+      100deg,
+      rgba(255, 255, 255, .93) 0%,
+      rgba(255, 255, 255, .76) 43%,
+      rgba(40, 84, 111, .13) 68%,
+      rgba(23, 56, 77, .03) 100%
+    ),
+    url("../images/bg-hero-mesh.svg"),
+    linear-gradient(135deg, #28546f, #17384d);
+}
+
+.support-contacts-section {
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+  padding-top: .25rem;
+}
+
+.support-contacts-section .section-intro {
+  max-width: 72ch;
+  margin: -.25rem 0 1.25rem;
+  color: var(--colour-muted, #52606d);
+}
+
+.support-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.15rem;
+  margin: 0 0 1.4rem;
+}
+
+.support-contact-card {
+  position: relative;
+  display: flex;
+  min-height: 12.25rem;
+  gap: 1rem;
+  overflow: hidden;
+  padding: 1.35rem;
+  border: 1px solid rgba(36, 85, 122, .2);
+  border-left: .35rem solid var(--contact-accent, #24557a);
+  border-radius: var(--radius);
+  box-shadow: 0 .45rem 1.2rem rgba(31, 41, 51, .11);
+  background-color: #fff;
+  background-image:
+    linear-gradient(
+      112deg,
+      rgba(255, 255, 255, .98) 0%,
+      rgba(255, 255, 255, .88) 50%,
+      rgba(255, 255, 255, .56) 72%,
+      rgba(255, 255, 255, .30) 100%
+    ),
+    var(--contact-artwork),
+    linear-gradient(
+      135deg,
+      var(--contact-base, #3b728e),
+      var(--contact-dark, #17384d)
+    );
+  background-repeat: no-repeat;
+  background-position: center, right center, center;
+  background-size: cover, min(25rem, 76%) auto, cover;
+}
+
+.support-contact-card--security {
+  --contact-accent: #176b87;
+  --contact-base: #397890;
+  --contact-dark: #153b50;
+  --contact-artwork: url("../images/bg-hero-circuit.svg");
+}
+
+.support-contact-card--risk {
+  --contact-accent: #9a6700;
+  --contact-base: #8b6b31;
+  --contact-dark: #4d3b19;
+  --contact-artwork: url("../images/bg-hero-mesh.svg");
+}
+
+.support-contact-card--ai {
+  --contact-accent: #56509c;
+  --contact-base: #6a65b7;
+  --contact-dark: #292d72;
+  --contact-artwork: url("../images/bg-hero-neural.svg");
+}
+
+.support-contact-icon {
+  display: inline-flex;
+  width: 3.25rem;
+  height: 3.25rem;
+  flex: 0 0 3.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: .85rem;
+  color: #fff;
+  background:
+    linear-gradient(
+      135deg,
+      var(--contact-accent),
+      var(--contact-dark)
+    );
+  box-shadow: 0 .35rem .9rem rgba(0, 0, 0, .16);
+  font-size: 1.5rem;
+}
+
+.support-contact-content {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+.support-contact-card h3 {
+  margin: .05rem 0 .55rem;
+  color: #17384d;
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.support-contact-card p {
+  max-width: 34ch;
+  margin: 0;
+  color: #243746;
+}
+
+.support-response {
+  align-self: flex-start;
+  margin-top: auto !important;
+  padding: .5rem .7rem;
+  border: 1px solid rgba(23, 56, 77, .17);
+  border-radius: .55rem;
+  background: rgba(255, 255, 255, .88);
+  box-shadow: 0 .15rem .45rem rgba(31, 41, 51, .08);
+  font-size: .9rem;
+}
+
+.support-contact-note {
+  clear: both;
+  position: relative;
+  z-index: 2;
+  margin: .75rem 0 0 !important;
+  padding-top: .35rem;
+}
+
+@media (min-width: 48em) {
+  .support-contact-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .support-contact-card {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .support-contact-card {
+    min-height: 0;
+    background-image:
+      linear-gradient(
+        135deg,
+        rgba(246, 87, 34, .06),
+        rgba(255, 255, 255, .99)
+      );
+  }
+}
+
+
+/* 25. VERSION 25 - ROCKWELL AUTOMATION DEMONSTRATION -----------------------
+   Residual risk, risk appetite, control effectiveness and review monitoring.
+   Mobile-first: tiles stack by default and form a row from 40em.
+*/
+
+.cell-meta {
+  display: block;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: var(--colour-body);
+  margin-top: 0.3rem;
+}
+
+.score-text {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.register-scroll--risks .data-table {
+  min-width: 78rem;
+}
+
+.register-scroll--controls .data-table {
+  min-width: 84rem;
+}
+
+.appetite-form {
+  max-width: 28rem;
+}
+
+.risk-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.summary-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--colour-line);
+  border-left: 4px solid var(--colour-accent);
+  border-radius: var(--radius);
+  background: var(--colour-surface);
+}
+
+.summary-value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--colour-ink);
+}
+
+.summary-label {
+  font-size: 0.85rem;
+  color: var(--colour-body);
+}
+
+.heatmap-table td.heat--above-appetite {
+  box-shadow: inset 0 0 0 2px #ffffff, inset 0 0 0 5px var(--colour-ink);
+}
+
+.basis-toggle {
+  margin-bottom: var(--space-2);
+}
+
+.clause-list {
+  display: grid;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-width: 18rem;
+  font-size: 0.84rem;
+}
+
+.clause-ref {
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+.demo-note {
+  font-size: 0.85rem;
+  margin-top: var(--space-3) !important;
+}
+
+.register-scroll .ref-id {
+  white-space: nowrap;
+}
+
+.register-scroll--risks td:nth-child(6) {
+  min-width: 19rem;
+}
+
+.register-scroll--risks td:nth-child(7),
+.register-scroll--controls td:nth-child(7) {
+  min-width: 15rem;
+}
+
+@media (min-width: 60em) {
+  .risk-summary {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+@media print {
+  .appetite-form,
+  .basis-toggle {
+    display: none !important;
+  }
+
+  .register-scroll--risks .data-table,
+  .register-scroll--controls .data-table {
+    min-width: 0;
+  }
+}
