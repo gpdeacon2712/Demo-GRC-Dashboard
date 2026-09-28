@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+
+<!-- GRC & AI Governance Hub - Version 25 (Rockwell Automation demonstration)
+
+   Demonstration build derived from the Version 23.4 academic prototype.
+   Version 25 extensions (inherent/residual risk, risk appetite and treatment,
+   clause-level framework mapping, control design/operating effectiveness and
+   risk review monitoring) were developed with AI assistance (Claude).
+   All data is fictional / synthetic. Not an official Rockwell Automation system. -->
+
+<html lang="en-GB">
+
+<head>
+    <meta charset="utf-8"/>
+
+    <!-- Ensures responsive scaling on mobile devices -->
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+    <title>Risk Register - GRC & AI Governance Control Hub | Version 25 Rockwell Automation Demo</title>
+
+    <meta
+        content="Synthetic risk register with a live CVE and EPSS threat-intelligence lookup. Version 25 Rockwell Automation demonstration build using Bootstrap 5."
+        name="description"/>
+
+    <!-- Site icon and web fonts -->
+    <link href="images/logo-mark.svg" rel="icon" type="image/svg+xml"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap"
+        rel="stylesheet"/>
+
+    <!-- Bootstrap framework and custom site styles -->
+    <link
+        crossorigin="anonymous"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+        rel="stylesheet"/>
+
+    <link href="css/styles.css" rel="stylesheet"/>
+</head>
+
+<body>
+
+    <!-- Keyboard shortcut to bypass repeated navigation -->
+    <a class="skip-link" href="#main-content">
+        Skip to main content
+    </a>
+
+    <!-- Identifies the page as a demonstration build -->
+    <p class="prototype-banner mb-0 py-1 px-3">
+        Version 25 · Rockwell Automation demonstration — all data is fictional / synthetic
+    </p>
+
+    <!-- Responsive Bootstrap navigation -->
+    <nav
+        aria-label="Main navigation"
+        class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+
+        <div class="container-fluid px-3 px-lg-4">
+
+            <a
+                class="navbar-brand d-flex align-items-center gap-2 fw-bold"
+                href="index.html">
+
+                <img
+                    alt=""
+                    height="34"
+                    src="images/logo-mark.svg"
+                    width="34"/>
+
+                GRC & AI Governance Hub
+            </a>
+
+            <!-- Collapses navigation on smaller screens -->
+            <button
+                aria-controls="site-nav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-bs-target="#site-nav"
+                data-bs-toggle="collapse"
+                type="button">
+
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div
+                class="collapse navbar-collapse"
+                id="site-nav">
+
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <span aria-hidden="true">🏠</span>
+                            Dashboard
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="controls.html">
+                            <span aria-hidden="true">🛡️</span>
+                            Control Library
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a
+                            aria-current="page"
+                            class="nav-link active"
+                            href="risks.html">
+
+                            <span aria-hidden="true">⚠️</span>
+                            Risk Register
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="ai-register.html">
+                            <span aria-hidden="true">🤖</span>
+                            AI Use-Case Register
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="governance-support.html">
+                            <span aria-hidden="true">📞</span>
+                            Governance Support
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="my-profile.html">
+                            <span aria-hidden="true">👤</span>
+                            My Profile
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main
+        class="container py-4 py-lg-5"
+        id="main-content">
+
+        <!-- Page heading and primary actions -->
+        <header
+            class="page-header page-header--risk card border-0 shadow-sm mb-4">
+
+            <div class="card-body p-3 p-md-4">
+
+                <div
+                    class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-3">
+
+                    <div class="d-flex align-items-start gap-3 flex-grow-1">
+
+                        <div
+                            aria-hidden="true"
+                            class="page-header-icon">
+                            ⚠️
+                        </div>
+
+                        <div class="page-header-copy">
+
+                            <h1 class="h2 mb-1">
+                                Risk Register
+                            </h1>
+
+                            <p class="text-body-secondary mb-2">
+                                Review synthetic organisational risks, visualise exposure
+                                and enrich vulnerabilities using CVE and EPSS data.
+                            </p>
+
+                            <div class="d-flex flex-wrap gap-2 page-header-badges">
+
+                                <span class="badge rounded-pill text-bg-light border">
+                                    Inherent and residual risk
+                                </span>
+
+                                <span class="badge rounded-pill text-bg-light border">
+                                    Appetite-based treatment
+                                </span>
+
+                                <span class="badge rounded-pill text-bg-light border">
+                                    Review monitoring
+                                </span>
+
+                                <span class="badge rounded-pill text-bg-light border">
+                                    Live CVE and EPSS
+                                </span>
+
+                                <span class="badge rounded-pill text-bg-light border">
+                                    Local saved risks
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-wrap gap-2 page-header-actions">
+
+                        <a
+                            class="btn btn-primary"
+                            href="#registered-risks">
+                            Review register
+                        </a>
+
+                        <a
+                            class="btn btn-outline-secondary"
+                            href="#cve-lookup">
+                            Run CVE lookup
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Version 25: organisational risk appetite drives treatment recommendations -->
+        <section
+            aria-labelledby="appetite-title"
+            class="appetite-panel card border-0 shadow-sm mb-4">
+
+            <div class="card-body p-3 p-md-4">
+
+                <h2 class="h4" id="appetite-title">
+                    Risk appetite and treatment
+                </h2>
+
+                <p class="mb-2">
+                    Inherent risk is scored before controls; residual risk is scored after
+                    the mapped controls are taken into account. Each residual score is
+                    compared with the organisation's risk appetite to recommend a treatment
+                    and to flag acceptances that need formal sign-off.
+                </p>
+
+                <form class="appetite-form" id="appetite-form">
+                    <label class="form-label" for="risk-appetite">
+                        Organisational risk appetite (maximum acceptable residual score)
+                    </label>
+
+                    <select
+                        aria-describedby="risk-appetite-status"
+                        class="form-select"
+                        id="risk-appetite"
+                        name="risk-appetite">
+                        <option value="4">Averse - accept 4 or less</option>
+                        <option value="6">Minimal - accept 6 or less</option>
+                        <option value="9">Cautious - accept 9 or less</option>
+                        <option value="12">Open - accept 12 or less</option>
+                    </select>
+                </form>
+
+                <p
+                    aria-live="polite"
+                    class="form-hint"
+                    id="risk-appetite-status">
+                </p>
+
+                <!-- Summary tiles recalculated from the register and appetite -->
+                <div
+                    aria-label="Risk register summary"
+                    class="risk-summary"
+                    id="risk-summary"
+                    role="group">
+                </div>
+            </div>
+        </section>
+
+        <h2 id="registered-risks">
+            Registered risks
+        </h2>
+
+        <!-- Keyboard-focusable responsive region containing the risk table -->
+        <div
+            aria-describedby="risks-scroll-hint"
+            aria-label="Scrollable Risk Register"
+            class="register-scroll register-scroll--risks table-responsive"
+            role="region"
+            tabindex="0">
+
+            <p
+                class="scroll-hint"
+                id="risks-scroll-hint">
+                Scroll within this panel to review additional risks.
+                The column headings remain visible.
+            </p>
+
+            <!-- Semantic table presents the current risk records -->
+            <table class="data-table table table-striped table-hover align-middle">
+
+                <caption>
+                    Risk register (synthetic sample data)
+                </caption>
+
+                <thead>
+                    <tr>
+                        <th scope="col">Risk ID</th>
+                        <th scope="col">Risk, category and owner</th>
+                        <th scope="col">Inherent risk (before controls)</th>
+                        <th scope="col">Mitigating controls and health</th>
+                        <th scope="col">Residual risk (after controls)</th>
+                        <th scope="col">Treatment against appetite</th>
+                        <th scope="col">Review and monitoring</th>
+                    </tr>
+                </thead>
+
+                <!-- JavaScript inserts risk records into the table -->
+                <tbody id="risk-rows">
+                </tbody>
+
+            </table>
+        </div>
+
+        <!-- Controls for exporting or clearing saved risks -->
+        <p class="table-actions">
+
+            <button
+                class="toggle-button btn btn-primary"
+                id="download-risks"
+                type="button">
+                Download risk register (CSV)
+            </button>
+
+            <button
+                class="toggle-button btn btn-primary"
+                hidden=""
+                id="clear-saved-risks"
+                type="button">
+                Clear my saved risks
+            </button>
+
+        </p>
+
+        <!-- Added risks remain in browser storage and are not sent to a server -->
+        <p class="form-hint">
+            Mapped controls show which safeguards are intended to reduce each risk.
+            Control status is loaded from the Control Library. Risks you add from the
+            lookup below are stored only in this browser's localStorage — nothing is
+            sent to a server. Use the clear button to remove them.
+        </p>
+
+        <h2>
+            Risk visualisation
+        </h2>
+
+        <p>
+            The register's likelihood x impact data, two ways. Choose whether to plot
+            inherent or residual ratings, then choose a view — both are computed live
+            from the same data, including any risks added from the threat-intelligence
+            lookup below.
+        </p>
+
+        <!-- Version 25: choose whether the visualisations plot inherent or residual ratings -->
+        <div
+            aria-label="Choose rating basis"
+            class="view-toggle basis-toggle"
+            role="group">
+
+            <button
+                aria-pressed="false"
+                class="toggle-button btn btn-primary"
+                data-basis="inherent"
+                type="button">
+                Inherent risk
+            </button>
+
+            <button
+                aria-pressed="true"
+                class="toggle-button btn btn-primary"
+                data-basis="residual"
+                type="button">
+                Residual risk
+            </button>
+
+        </div>
+
+        <!-- aria-pressed communicates which visualisation is currently selected -->
+        <div
+            aria-label="Choose risk visualisation"
+            class="view-toggle"
+            role="group">
+
+            <button
+                aria-pressed="true"
+                class="toggle-button btn btn-primary"
+                data-view="heatmap-view"
+                type="button">
+                Heat map
+            </button>
+
+            <button
+                aria-pressed="false"
+                class="toggle-button btn btn-primary"
+                data-view="bubble-view"
+                type="button">
+                Bubble chart
+            </button>
+
+        </div>
+
+        <!-- Accessible tabular representation of likelihood and impact -->
+        <section
+            aria-label="Risk heat map"
+            id="heatmap-view">
+
+            <p>
+                A 5x5 likelihood x impact matrix. Each cell lists the risk IDs scored
+                at that position; the band (score = likelihood x impact: 15+ high,
+                8-12 medium, 6 or less low) is conveyed by the cell's position and
+                score as well as its colour.
+            </p>
+
+            <!-- JavaScript builds the heat map as a semantic table -->
+            <div id="risk-heatmap"></div>
+
+        </section>
+
+        <!-- Visual alternative showing the same risk data as a bubble chart -->
+        <section
+            aria-label="Risk bubble chart"
+            hidden=""
+            id="bubble-view">
+
+            <p>
+                The same data as an SVG bubble chart: bubble position shows likelihood
+                and impact, bubble size shows how many risks share that position.
+            </p>
+
+            <figure class="bubble-figure">
+
+                <!-- JavaScript inserts the SVG chart here -->
+                <div id="risk-bubble"></div>
+
+                <figcaption>
+                    Bubble size is proportional to the number of risks at that
+                    likelihood/impact position. The heat-map view presents the
+                    same data in accessible tabular form.
+                </figcaption>
+
+            </figure>
+
+        </section>
+
+        <!-- Live vulnerability lookup using CVE and EPSS information -->
+        <section
+            aria-labelledby="cve-lookup-title"
+            class="cve-lookup-panel artwork-panel artwork-panel--circuit card shadow-sm border-0">
+
+            <h2 id="cve-lookup-title">
+                Live threat-intelligence lookup
+            </h2>
+
+            <p>
+                This tool checks live security data from trusted sources. It loads
+                recent CVE identifiers from CIRCL, and when you choose one, it fetches
+                detailed information and EPSS scores to help you assess the risk.
+                You can save the result straight into your risk register.
+            </p>
+
+            <form id="cve-lookup">
+
+                <label
+                    class="form-label"
+                    for="cve-id">
+                    CVE identifier
+                </label>
+
+                <!-- Pattern validation checks the CVE format before the API request -->
+                <input
+                    aria-describedby="cve-hint recent-cve-status cve-id-error"
+                    class="form-control"
+                    id="cve-id"
+                    list="recent-cve-options"
+                    name="cve-id"
+                    pattern="[Cc][Vv][Ee]-\d{4}-\d{4,}"
+                    placeholder="CVE-2021-44228"
+                    required=""
+                    title="Format: CVE-YYYY-NNNN, e.g. CVE-2021-44228"
+                    type="text"/>
+
+                <!-- Datalist provides recent CVE suggestions -->
+                <datalist id="recent-cve-options"></datalist>
+
+                <p
+                    class="form-hint"
+                    id="cve-hint">
+                    Format: CVE-YYYY-NNNN. Try CVE-2021-44228 (Log4Shell).
+                </p>
+
+                <!-- Announces the status of recent CVE suggestions -->
+                <p
+                    aria-live="polite"
+                    class="form-hint api-suggestion-status"
+                    id="recent-cve-status">
+                    Loading recent CVE suggestions…
+                </p>
+
+                <!-- Hidden until client-side validation identifies an error -->
+                <p
+                    class="form-hint error-message validation-error"
+                    hidden=""
+                    id="cve-id-error">
+                    Enter a CVE identifier in the format CVE-YYYY-NNNN.
+                </p>
+
+                <button
+                    class="btn btn-primary"
+                    id="cve-submit"
+                    type="submit">
+                    Look up vulnerability
+                </button>
+
+            </form>
+
+            <!-- Announces API progress, errors and results without moving focus -->
+            <div
+                aria-busy="false"
+                aria-live="polite"
+                class="results-region"
+                id="cve-results">
+            </div>
+
+        </section>
+
+        <!-- Link to further risk governance support -->
+        <section
+            aria-label="Risk support"
+            class="context-support">
+
+            <h2>
+                Need help with a risk?
+            </h2>
+
+            <p>
+                <a
+                    href="governance-support.html?type=report-risk&subject=Risk%20register%20query">
+                    Raise a risk support request
+                </a>.
+            </p>
+
+        </section>
+
+    </main>
+
+    <!-- Site footer -->
+    <footer
+        class="site-footer bg-dark text-white text-center py-4 px-3 mt-5">
+
+        <p>
+            Rockwell Automation demonstration build (Version 25).
+            No real organisational data is stored or displayed.
+        </p>
+
+        <p class="small mb-0">
+            Version 25 — Rockwell Automation demonstration: residual risk, risk appetite, control effectiveness and review monitoring
+        </p>
+
+    </footer>
+
+    <!-- Bootstrap behaviour and risk-register JavaScript -->
+    <script
+        crossorigin="anonymous"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+    <script src="js/main.js"></script>
+    <script src="js/governance.js"></script>
+    <script src="js/risks.js"></script>
+
+</body>
+</html>
+

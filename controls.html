@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<!-- GRC & AI Governance Hub - Version 25 (Rockwell Automation demonstration)
+
+   Demonstration build derived from the Version 23.4 academic prototype.
+   Version 25 extensions (inherent/residual risk, risk appetite and treatment,
+   clause-level framework mapping, control design/operating effectiveness and
+   risk review monitoring) were developed with AI assistance (Claude).
+   All data is fictional / synthetic. Not an official Rockwell Automation system. -->
+
+<html lang="en-GB">
+
+<head>
+    <meta charset="utf-8"/>
+
+    <!-- Ensures responsive scaling on mobile devices -->
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+    <title>Control Library - GRC & AI Governance Control Hub | Version 25 Rockwell Automation Demo</title>
+
+    <meta
+        content="Sample security control library mapped to ISO 27001, NIST CSF and IEC 62443. Version 25 Rockwell Automation demonstration build using Bootstrap 5."
+        name="description"/>
+
+    <!-- Site icon and web fonts -->
+    <link href="images/logo-mark.svg" rel="icon" type="image/svg+xml"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap"
+        rel="stylesheet"/>
+
+    <!-- Bootstrap framework and custom site styles -->
+    <link
+        crossorigin="anonymous"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+        rel="stylesheet"/>
+    <link href="css/styles.css" rel="stylesheet"/>
+</head>
+
+<body>
+
+    <!-- Keyboard shortcut to bypass repeated navigation -->
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- Identifies the page as a demonstration build -->
+    <p class="prototype-banner mb-0 py-1 px-3">
+        Version 25 · Rockwell Automation demonstration — all data is fictional / synthetic
+    </p>
+
+    <!-- Responsive Bootstrap navigation -->
+    <nav
+        aria-label="Main navigation"
+        class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+
+        <div class="container-fluid px-3 px-lg-4">
+
+            <a
+                class="navbar-brand d-flex align-items-center gap-2 fw-bold"
+                href="index.html">
+                <img alt="" height="34" src="images/logo-mark.svg" width="34"/>
+                GRC & AI Governance Hub
+            </a>
+
+            <!-- Collapses navigation on smaller screens -->
+            <button
+                aria-controls="site-nav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-bs-target="#site-nav"
+                data-bs-toggle="collapse"
+                type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="site-nav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <span aria-hidden="true">🏠</span> Dashboard
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a
+                            aria-current="page"
+                            class="nav-link active"
+                            href="controls.html">
+                            <span aria-hidden="true">🛡️</span> Control Library
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="risks.html">
+                            <span aria-hidden="true">⚠️</span> Risk Register
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="ai-register.html">
+                            <span aria-hidden="true">🤖</span> AI Use-Case Register
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="governance-support.html">
+                            <span aria-hidden="true">📞</span> Governance Support
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="my-profile.html">
+                            <span aria-hidden="true">👤</span> My Profile
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container py-4 py-lg-5" id="main-content">
+
+        <!-- Page heading and primary actions -->
+        <header class="page-header page-header--controls card border-0 shadow-sm mb-4">
+
+            <div class="card-body p-3 p-md-4">
+                <div
+                    class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-3">
+
+                    <div class="d-flex align-items-start gap-3 flex-grow-1">
+
+                        <div aria-hidden="true" class="page-header-icon">🛡️</div>
+
+                        <div class="page-header-copy">
+                            <h1 class="h2 mb-1">Control Library</h1>
+
+                            <p class="text-body-secondary mb-2">
+                                Search and filter controls mapped across security,
+                                operational technology and AI governance frameworks.
+                            </p>
+
+                            <div class="d-flex flex-wrap gap-2 page-header-badges">
+                                <span class="badge rounded-pill text-bg-light border">
+                                    Clause-level framework mapping
+                                </span>
+                                <span class="badge rounded-pill text-bg-light border">
+                                    Design and operating effectiveness
+                                </span>
+                                <span class="badge rounded-pill text-bg-light border">
+                                    Instant browser filtering
+                                </span>
+                                <span class="badge rounded-pill text-bg-light border">
+                                    CSV export
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-wrap gap-2 page-header-actions">
+                        <a class="btn btn-primary" href="#control-filter">
+                            Search controls
+                        </a>
+                        <a class="btn btn-outline-secondary" href="risks.html">
+                            View linked risks
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <!-- Search region used to filter the control dataset -->
+        <form
+            aria-label="Filter controls"
+            id="control-filter"
+            role="search">
+
+            <label class="form-label" for="filter-text">
+                Search controls
+            </label>
+
+            <!-- Search input filters controls by entered text -->
+            <input
+                autocomplete="off"
+                class="form-control"
+                id="filter-text"
+                name="filter-text"
+                placeholder="e.g. access control or A.8.8"
+                type="search"/>
+
+            <label class="form-label" for="filter-framework">
+                Framework
+            </label>
+
+            <!-- Select limits filtering to one framework -->
+            <select
+                class="form-select"
+                id="filter-framework"
+                name="filter-framework">
+
+                <option value="">All frameworks</option>
+                <option value="ISO 27001">ISO/IEC 27001:2022</option>
+                <option value="NIST CSF">NIST CSF</option>
+                <option value="IEC 62443">IEC 62443</option>
+                <option value="NIST SP 800-82">NIST SP 800-82</option>
+
+                <!-- Values match framework names stored in controls.json -->
+                <option value="ISO 42001">
+                    ISO/IEC 42001:2023 (AI management)
+                </option>
+                <option value="NIST AI RMF">NIST AI RMF</option>
+            </select>
+
+            <label class="form-label" for="filter-status">
+                Status
+            </label>
+
+            <!-- Select filters controls by implementation status -->
+            <select
+                class="form-select"
+                id="filter-status"
+                name="filter-status">
+
+                <option value="">All statuses</option>
+                <option value="Implemented">Implemented</option>
+                <option value="In progress">In progress</option>
+                <option value="Not implemented">Not implemented</option>
+            </select>
+
+            <label class="form-label" for="filter-health">
+                Control health
+            </label>
+
+            <!-- Version 25: filters by combined design and operating effectiveness -->
+            <select
+                class="form-select"
+                id="filter-health"
+                name="filter-health">
+
+                <option value="">All health levels</option>
+                <option value="Effective">Effective</option>
+                <option value="Needs improvement">Needs improvement</option>
+                <option value="Ineffective">Ineffective</option>
+                <option value="Not fully assessed">Not fully assessed</option>
+            </select>
+
+        </form>
+
+        <!-- Version 25: control evaluation health summary -->
+        <section
+            aria-labelledby="control-health-title"
+            class="card border-0 shadow-sm my-4">
+
+            <div class="card-body p-3 p-md-4">
+                <h2 class="h4" id="control-health-title">Control evaluation health</h2>
+
+                <p class="mb-2">
+                    Design effectiveness confirms a control is designed to address its risks;
+                    operating effectiveness confirms it has worked as designed over the test
+                    period. Overall health takes the weaker of the two results.
+                </p>
+
+                <div
+                    aria-label="Control health summary"
+                    class="risk-summary"
+                    id="control-summary"
+                    role="group">
+                </div>
+
+                <p class="form-hint demo-note mb-0">
+                    Clause references are illustrative for demonstration purposes and should be
+                    validated against the current licensed standards before operational use.
+                </p>
+            </div>
+        </section>
+
+        <!-- Announces updated result totals without moving keyboard focus -->
+        <p aria-live="polite" id="control-count"></p>
+
+        <!-- Exports the currently filtered control list -->
+        <p class="table-actions">
+            <button
+                class="toggle-button btn btn-primary"
+                id="download-controls"
+                type="button">
+                Download filtered controls (CSV)
+            </button>
+        </p>
+
+        <!-- Keyboard-focusable responsive region containing the control table -->
+        <div
+            aria-describedby="controls-scroll-hint"
+            aria-label="Scrollable Control Library"
+            class="register-scroll register-scroll--controls table-responsive"
+            role="region"
+            tabindex="0">
+
+            <p class="scroll-hint" id="controls-scroll-hint">
+                Scroll within this panel to review additional controls.
+                The column headings remain visible.
+            </p>
+
+            <!-- Semantic table presents the filtered control records -->
+            <table class="data-table table table-striped table-hover align-middle">
+
+                <caption>
+                    Security control library (synthetic sample data)
+                </caption>
+
+                <thead>
+                    <tr>
+                        <th scope="col">Control ID</th>
+                        <th scope="col">Control and owner</th>
+                        <th scope="col">Framework clauses satisfied</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Design effectiveness</th>
+                        <th scope="col">Operating effectiveness</th>
+                        <th scope="col">Control health and testing</th>
+                        <th scope="col">Risks mitigated</th>
+                    </tr>
+                </thead>
+
+                <tbody id="control-rows">
+                    <!-- JavaScript inserts rows from the synthetic controls dataset -->
+                </tbody>
+
+            </table>
+        </div>
+
+        <!-- Link to further governance support -->
+        <section
+            aria-label="Control support"
+            class="context-support">
+
+            <h2>Need help with a control?</h2>
+
+            <p>
+                <a
+                    href="governance-support.html?type=suggest-control&subject=Control%20library%20query">
+                    Raise a control review request
+                </a>.
+            </p>
+
+        </section>
+
+    </main>
+
+    <!-- Site footer -->
+    <footer class="site-footer bg-dark text-white text-center py-4 px-3 mt-5">
+
+        <p>
+            Rockwell Automation demonstration build (Version 25).
+            No real organisational data is stored or displayed.
+        </p>
+
+        <p class="small mb-0">
+            Version 25 — Rockwell Automation demonstration: residual risk, risk appetite, control effectiveness and review monitoring
+        </p>
+
+    </footer>
+
+    <!-- Bootstrap behaviour and page-specific JavaScript -->
+    <script
+        crossorigin="anonymous"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+    <script src="js/main.js"></script>
+    <script src="js/governance.js"></script>
+    <script src="js/controls.js"></script>
+
+</body>
+</html>
+

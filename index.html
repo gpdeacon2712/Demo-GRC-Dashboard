@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+
+<!-- GRC & AI Governance Hub - Version 25 (Rockwell Automation demonstration)
+
+   Demonstration build derived from the Version 23.4 academic prototype.
+   Version 25 extensions (inherent/residual risk, risk appetite and treatment,
+   clause-level framework mapping, control design/operating effectiveness and
+   risk review monitoring) were developed with AI assistance (Claude).
+   All data is fictional / synthetic. Not an official Rockwell Automation system. -->
+
+<html lang="en-GB">
+
+<head>
+    <meta charset="utf-8"/>
+
+    <!-- Ensures responsive scaling on mobile devices -->
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+    <title>Dashboard - GRC & AI Governance Control Hub | Version 25 Rockwell Automation Demo</title>
+
+    <meta
+        content="Demonstration dashboard showing sample control, risk and AI governance status. Version 25 Rockwell Automation demonstration build using Bootstrap 5."
+        name="description"/>
+
+    <!-- Site icon and web fonts -->
+    <link href="images/logo-mark.svg" rel="icon" type="image/svg+xml"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap"
+        rel="stylesheet"/>
+
+    <!-- Bootstrap framework and custom site styles -->
+    <link
+        crossorigin="anonymous"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+        rel="stylesheet"/>
+
+    <link href="css/styles.css" rel="stylesheet"/>
+</head>
+
+<body>
+
+    <!-- Keyboard shortcut to bypass repeated navigation -->
+    <a class="skip-link" href="#main-content">
+        Skip to main content
+    </a>
+
+    <!-- Identifies the page as a demonstration build -->
+    <p class="prototype-banner mb-0 py-1 px-3">
+        Version 25 · Rockwell Automation demonstration — all data is fictional / synthetic
+    </p>
+
+    <!-- Responsive Bootstrap navigation -->
+    <nav
+        aria-label="Main navigation"
+        class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+
+        <div class="container-fluid px-3 px-lg-4">
+
+            <a
+                class="navbar-brand d-flex align-items-center gap-2 fw-bold"
+                href="index.html">
+
+                <img
+                    alt=""
+                    height="34"
+                    src="images/logo-mark.svg"
+                    width="34"/>
+
+                GRC & AI Governance Hub
+            </a>
+
+            <!-- Collapses navigation on smaller screens -->
+            <button
+                aria-controls="site-nav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                class="navbar-toggler"
+                data-bs-target="#site-nav"
+                data-bs-toggle="collapse"
+                type="button">
+
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div
+                class="collapse navbar-collapse"
+                id="site-nav">
+
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a
+                            aria-current="page"
+                            class="nav-link active"
+                            href="index.html">
+
+                            <span aria-hidden="true">🏠</span>
+                            Dashboard
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            href="controls.html">
+
+                            <span aria-hidden="true">🛡️</span>
+                            Control Library
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            href="risks.html">
+
+                            <span aria-hidden="true">⚠️</span>
+                            Risk Register
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            href="ai-register.html">
+
+                            <span aria-hidden="true">🤖</span>
+                            AI Use-Case Register
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            href="governance-support.html">
+
+                            <span aria-hidden="true">📞</span>
+                            Governance Support
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a
+                            class="nav-link"
+                            href="my-profile.html">
+
+                            <span aria-hidden="true">👤</span>
+                            My Profile
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main dashboard content -->
+    <main
+        class="container py-4 py-lg-5"
+        id="main-content">
+
+        <!-- Page heading and primary actions -->
+        <header
+            class="page-header page-header--dashboard card border-0 shadow-sm mb-4">
+
+            <div class="card-body p-3 p-md-4">
+
+                <div
+                    class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-3">
+
+                    <div class="d-flex align-items-start gap-3 flex-grow-1">
+
+                        <div
+                            aria-hidden="true"
+                            class="page-header-icon">
+                            📊
+                        </div>
+
+                        <div class="page-header-copy">
+
+                            <h1 class="h2 mb-1">
+                                Governance Dashboard
+                            </h1>
+
+                            <p class="text-body-secondary mb-2">
+                                Monitor control status, risk exposure, compliance
+                                maturity and AI governance activity from one live view.
+                            </p>
+
+                            <div class="d-flex flex-wrap gap-2 page-header-badges">
+
+                                <span class="badge rounded-pill text-bg-light border">
+                                    Live computed metrics
+                                </span>
+
+                                <span class="badge rounded-pill text-bg-light border">
+                                    Synthetic datasets
+                                </span>
+
+                                <span class="badge rounded-pill text-bg-light border">
+                                    Cross-framework view
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-wrap gap-2 page-header-actions">
+
+                        <a
+                            class="btn btn-primary"
+                            href="#dashboard-analytics">
+                            View analytics
+                        </a>
+
+                        <a
+                            class="btn btn-outline-secondary"
+                            href="risks.html">
+                            Review risks
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Rotating governance messages with user controls -->
+        <section
+            aria-labelledby="insight-title"
+            class="governance-insight governance-insight--prominent artwork-panel artwork-panel--mesh card shadow-sm border-0">
+
+            <span
+                aria-hidden="true"
+                class="insight-icon">
+                📣
+            </span>
+
+            <div>
+
+                <h2 id="insight-title">
+                    GRC Insight
+                </h2>
+
+                <!-- Announces updated messages without moving keyboard focus -->
+                <p
+                    aria-live="polite"
+                    id="rotating-message">
+                    Welcome to the GRC Hub
+                </p>
+
+            </div>
+
+            <!-- Allows users to control the rotating messages -->
+            <div
+                aria-label="Governance message controls"
+                class="insight-controls">
+
+                <button
+                    aria-label="Previous governance message"
+                    class="btn btn-primary"
+                    id="previous-message"
+                    type="button">
+                    ‹
+                </button>
+
+                <!-- aria-pressed communicates the pause state -->
+                <button
+                    aria-label="Pause rotating governance messages"
+                    aria-pressed="false"
+                    class="btn btn-primary"
+                    id="toggle-messages"
+                    type="button">
+                    ⏸
+                </button>
+
+                <button
+                    aria-label="Next governance message"
+                    class="btn btn-primary"
+                    id="next-message"
+                    type="button">
+                    ›
+                </button>
+
+            </div>
+        </section>
+
+        <h2 id="dashboard-analytics">
+            <span
+                aria-hidden="true"
+                class="section-icon">
+                📊
+            </span>
+            Dashboard analytics
+        </h2>
+
+        <!-- JavaScript generates metric cards from the synthetic datasets -->
+        <section
+            aria-label="Key governance metrics"
+            class="card-grid row g-4"
+            id="metric-cards">
+
+            <!-- Fallback remains visible until the datasets have loaded -->
+            <p>Loading metrics..</p>
+
+        </section>
+
+        <!-- Summary panels show relationships and upcoming reviews -->
+        <section
+            aria-label="Governance relationship and review summaries"
+            class="dashboard-overview-grid row g-4">
+
+            <article
+                aria-labelledby="relationship-health-title"
+                class="dashboard-panel relationship-panel artwork-panel artwork-panel--circuit card shadow-sm border-0">
+
+                <h2 id="relationship-health-title">
+                    <span
+                        aria-hidden="true"
+                        class="section-icon">
+                        🔗
+                    </span>
+                    Relationship health
+                </h2>
+
+                <p>
+                    A live summary of the governance chain linking AI use cases,
+                    identified risks and mitigating controls.
+                </p>
+
+                <!-- JavaScript updates the governance relationship summary -->
+                <div
+                    aria-live="polite"
+                    class="relationship-health"
+                    id="relationship-health">
+
+                    <p>Loading relationship health…</p>
+
+                </div>
+            </article>
+
+            <article
+                aria-labelledby="upcoming-reviews-title"
+                class="dashboard-panel artwork-panel artwork-panel--neural card shadow-sm border-0">
+
+                <h2 id="upcoming-reviews-title">
+
+                    <span
+                        aria-hidden="true"
+                        class="section-icon">
+                        📅
+                    </span>
+
+                    Upcoming risk and AI reviews
+                </h2>
+
+                <p>
+                    The next scheduled reviews from the Risk Register and the AI Use-Case
+                    Register, with overdue items listed first.
+                </p>
+
+                <!-- JavaScript inserts upcoming risk and AI review dates -->
+                <div
+                    aria-live="polite"
+                    class="upcoming-reviews"
+                    id="upcoming-reviews">
+
+                    <p>Loading review dates…</p>
+
+                </div>
+
+                <p class="panel-action">
+                    <a href="ai-register.html">
+                        Open AI register →
+                    </a>
+                </p>
+
+            </article>
+        </section>
+
+        <!-- Shows control coverage across governance frameworks -->
+        <section
+            aria-labelledby="framework-coverage-title"
+            class="dashboard-panel artwork-panel artwork-panel--mesh card shadow-sm border-0">
+
+            <h2 id="framework-coverage-title">
+
+                <span
+                    aria-hidden="true"
+                    class="section-icon">
+                    🧭
+                </span>
+
+                Framework coverage
+            </h2>
+
+            <p>
+                Live coverage shows how many controls map to each framework
+                and how many are fully implemented.
+            </p>
+
+            <!-- JavaScript calculates coverage from the control dataset -->
+            <div
+                aria-live="polite"
+                class="framework-coverage"
+                id="framework-coverage">
+
+                <p>Loading framework coverage…</p>
+
+            </div>
+
+        </section>
+
+        <h2>Where to start</h2>
+
+        <!-- Navigation cards provide direct access to the main hub modules -->
+        <section
+            aria-label="GRC Hub modules"
+            class="feature-grid row g-4">
+
+            <article
+                class="feature-card feature-card--risk card shadow-sm border-0">
+
+                <span
+                    aria-hidden="true"
+                    class="feature-icon">
+                    ⚠️
+                </span>
+
+                <h3>Risk Register</h3>
+
+                <p>
+                    View, assess and manage organisational risks
+                    and their mitigating controls.
+                </p>
+
+                <a
+                    class="button-link btn btn-outline-primary"
+                    href="risks.html">
+                    View risks →
+                </a>
+
+            </article>
+
+            <article
+                class="feature-card feature-card--control card shadow-sm border-0">
+
+                <span
+                    aria-hidden="true"
+                    class="feature-icon">
+                    🛡️
+                </span>
+
+                <h3>Control Library</h3>
+
+                <p>
+                    Browse controls mapped to risks, standards
+                    and governance frameworks.
+                </p>
+
+                <a
+                    class="button-link btn btn-outline-primary"
+                    href="controls.html">
+                    View controls →
+                </a>
+
+            </article>
+
+            <article
+                class="feature-card feature-card--ai card shadow-sm border-0">
+
+                <span
+                    aria-hidden="true"
+                    class="feature-icon">
+                    🤖
+                </span>
+
+                <h3>AI Register</h3>
+
+                <p>
+                    Register fictional AI tools and record applicable
+                    governance controls.
+                </p>
+
+                <a
+                    class="button-link btn btn-outline-primary"
+                    href="ai-register.html">
+                    View AI register →
+                </a>
+
+            </article>
+
+            <article
+                class="feature-card feature-card--cve card shadow-sm border-0">
+
+                <span
+                    aria-hidden="true"
+                    class="feature-icon">
+                    🔍
+                </span>
+
+                <h3>CVE Lookup</h3>
+
+                <p>
+                    Use the Risk Register to enrich vulnerabilities
+                    with CVE and EPSS data.
+                </p>
+
+                <a
+                    class="button-link btn btn-outline-primary"
+                    href="risks.html#cve-lookup">
+                    Look up CVE →
+                </a>
+
+            </article>
+
+            <article
+                class="feature-card feature-card--support card shadow-sm border-0">
+
+                <span
+                    aria-hidden="true"
+                    class="feature-icon">
+                    📞
+                </span>
+
+                <h3>Governance Support</h3>
+
+                <p>
+                    Raise fictional queries, report issues or request
+                    governance guidance.
+                </p>
+
+                <a
+                    class="button-link btn btn-outline-primary"
+                    href="governance-support.html">
+                    Open support →
+                </a>
+
+            </article>
+
+        </section>
+
+    </main>
+
+    <!-- Site footer -->
+    <footer
+        class="site-footer bg-dark text-white text-center py-4 px-3 mt-5">
+
+        <p>
+            Rockwell Automation demonstration build (Version 25).
+            No real organisational data is stored or displayed.
+        </p>
+
+        <p class="small mb-0">
+            Version 25 — Rockwell Automation demonstration: residual risk, risk appetite, control effectiveness and review monitoring
+        </p>
+
+    </footer>
+
+    <!-- Bootstrap behaviour and dashboard JavaScript -->
+    <script
+        crossorigin="anonymous"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+    <script src="js/main.js"></script>
+    <script src="js/governance.js"></script>
+    <script src="js/dashboard.js"></script>
+
+</body>
+</html>
+
+
+
+
