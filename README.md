@@ -124,29 +124,27 @@ Alternatively, use the VS Code Live Server extension. Then open <http://localhos
 
 ## Project links
 
-- **GitHub repository:** https://github.com/gpdeacon2712/web-site-projects
-- **Assignment source folder:** https://github.com/gpdeacon2712/web-site-projects/tree/main/Assignment
-- **Module weekly coursework and assignments:** https://gpdeacon2712.github.io/web-site-projects/
-- **Direct GRC Hub assignment:** https://gpdeacon2712.github.io/web-site-projects/Assignment/index.html
+- **GitHub repository:** https://github.com/gpdeacon2712/Demo-GRC-Dashboard
+- **Live demonstration:** https://gpdeacon2712.github.io/Demo-GRC-Dashboard/
 
+## GitHub Pages deployment
+
+The demonstration is deployed using GitHub Pages from the `main` branch (root folder). A `.nojekyll` file ensures the files are served as-is.
+
+**Live demonstration:** https://gpdeacon2712.github.io/Demo-GRC-Dashboard/
 ## GitHub Pages deployment
 
 The application is deployed using GitHub Pages.
 
-**Module site:** https://gpdeacon2712.github.io/web-site-projects/
-
-**Direct assignment:** https://gpdeacon2712.github.io/web-site-projects/Assignment/index.html
-
-**Assignment source:** https://github.com/gpdeacon2712/web-site-projects/tree/main/Assignment
 
 The canonical pages are:
 
-- `index.html`
-- `risks.html`
-- `controls.html`
-- `ai-register.html`
-- `governance-support.html`
-- `my-profile.html`
+- index.html`
+- risks.html`
+- controls.html`
+- ai-register.html`
+- governance-support.html`
+- my-profile.html`
 
 The Governance Support and Profile routes use `governance-support.html` and `my-profile.html` as their canonical filenames.
 
