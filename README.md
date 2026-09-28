@@ -3,7 +3,8 @@
 > Demonstration build for internal discussion. All data is fictional / synthetic.
 > Not an official Rockwell Automation system. Derived from the Version 23.4
 > academic prototype (kept unchanged in the `Assignment` folder). Version 25
-> extensions were developed with AI assistance (Claude).
+> extensions were developed and will continue to evolve with GTC 
+> team support.
 
 ## What is new in Version 25
 
