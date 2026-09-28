@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" preserveAspectRatio="xMaxYMid slice">
+  <!-- Original decorative background variant for AI governance pages:
+       a stylised neural network (three layers, feed-forward) with one
+       ringed "human oversight" node interrupting the output layer.
+       White at low opacity, for use over the dark red gradient. -->
+  <g stroke="#FFFFFF" stroke-opacity="0.10" stroke-width="1.2" fill="none">
+    <path d="M470 60 L610 90 M470 60 L610 160 M470 60 L610 230"/>
+    <path d="M470 150 L610 90 M470 150 L610 160 M470 150 L610 230"/>
+    <path d="M470 240 L610 90 M470 240 L610 160 M470 240 L610 230"/>
+    <path d="M610 90 L740 125 M610 160 L740 125 M610 230 L740 125"/>
+    <path d="M610 90 L740 205 M610 160 L740 205 M610 230 L740 205"/>
+  </g>
+  <g fill="#FFFFFF" fill-opacity="0.20">
+    <circle cx="470" cy="60" r="6"/>
+    <circle cx="470" cy="150" r="6"/>
+    <circle cx="470" cy="240" r="6"/>
+    <circle cx="610" cy="90" r="7"/>
+    <circle cx="610" cy="160" r="7"/>
+    <circle cx="610" cy="230" r="7"/>
+    <circle cx="740" cy="125" r="8"/>
+    <circle cx="740" cy="205" r="8"/>
+  </g>
+  <!-- human-oversight ring around one output node -->
+  <circle cx="740" cy="205" r="17" fill="none" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="2"/>
+</svg>

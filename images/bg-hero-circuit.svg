@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" preserveAspectRatio="xMaxYMid slice">
+  <!-- Decorative hero background alternative: circuit-trace motif for a
+       more industrial/OT feel. Same rules as the mesh: transparent base,
+       low-opacity white, layered under CSS so heading contrast holds. -->
+  <g stroke="#ffffff" stroke-opacity="0.12" stroke-width="2" fill="none" stroke-linecap="round">
+    <path d="M600 55 H480 V115 H380"/>
+    <path d="M600 140 H520 V95"/>
+    <path d="M600 205 H455 V255 H360"/>
+    <path d="M540 300 V240 H470"/>
+    <path d="M420 300 V190 H330 V150"/>
+    <path d="M480 55 V20"/>
+    <path d="M380 115 H310 V65"/>
+  </g>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.2" stroke-width="2">
+    <circle cx="380" cy="115" r="6"/>
+    <circle cx="520" cy="95" r="5"/>
+    <circle cx="360" cy="255" r="6"/>
+    <circle cx="470" cy="240" r="5"/>
+    <circle cx="330" cy="150" r="5"/>
+    <circle cx="310" cy="65" r="4"/>
+    <circle cx="480" cy="20" r="4"/>
+  </g>
+  <g fill="#ffffff" fill-opacity="0.18">
+    <circle cx="380" cy="115" r="2"/>
+    <circle cx="360" cy="255" r="2"/>
+    <circle cx="330" cy="150" r="1.8"/>
+  </g>
+</svg>
