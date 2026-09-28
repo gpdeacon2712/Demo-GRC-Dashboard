@@ -512,6 +512,6 @@ Future production refinement could include:
 
 ## Provenance
 
-Version 25 is a demonstration build derived from the Version 23.4 academic prototype. The Version 25 extensions were developed with AI assistance (Claude) and reviewed by the author.
+Version 25 is a demonstration build derived from the Version 23.4 academic prototype. The Version 25 extensions were developed with GRC support and will continue to evolve with further GTC team support and reviewed by the author.
 
-External technical references, standards, and supporting sources used within the accompanying report are cited separately using the required academic referencing format (APA7).
+
